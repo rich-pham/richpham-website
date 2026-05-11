@@ -1,26 +1,130 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'NunitoSans';
+  src: url('/fonts/NunitoSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NunitoSans';
+  src: url('/fonts/NunitoSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary-navy: #0F2A71;
+  --color-secondary-navy: #001740;
+  --color-primary-cta: #F4D462;
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #F4F4F4;
+  --color-text-primary: #000000;
+  --color-text-light: #ffffff;
+  --color-border-card: #E0E0E0;
+  --color-border-input: #A8B2BD;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  letter-spacing: 0 !important;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'NunitoSans', sans-serif;
+  font-weight: 400;
+  color: var(--color-text-primary);
+  background: var(--color-bg-primary);
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'NunitoSans', sans-serif;
+  font-weight: 800;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: #F4D462;
+  color: #001740;
+  border-radius: 6px;
+  padding: 14px 28px;
+  font-family: 'NunitoSans', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  border: none;
+  box-shadow: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+}
+.btn-primary:hover {
+  background: #000000;
+  color: #F4D462;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #0F2A71;
+  border: 1px solid #0F2A71;
+  border-radius: 6px;
+  padding: 14px 28px;
+  font-family: 'NunitoSans', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+}
+.btn-secondary:hover {
+  background: #0F2A71;
+  color: #F4D462;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 350ms ease forwards;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.eyebrow {
+  font-family: 'NunitoSans', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1;
 }
