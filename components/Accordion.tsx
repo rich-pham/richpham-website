@@ -273,7 +273,6 @@ export default function Accordion() {
           {/* Image */}
           <div
             style={{
-              position: 'relative',
               borderRadius: '6px',
               overflow: 'hidden',
               aspectRatio: '4/5',
