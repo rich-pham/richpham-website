@@ -37,18 +37,21 @@ const racingAchievements = [
 const blogPosts = [
   {
     title: "From Zero to Factory: How I Brought Pocari Sweat to Vietnam's Fast Lane",
-    href: 'https://www.richpham.com/post/from-zero-to-factory-how-i-brought-pocari-sweat-to-vietnam-s-fast-lane',
+    href: '/blog/from-zero-to-factory-how-i-brought-pocari-sweat-to-vietnam-s-fast-lane',
     image: '/images/about/blog-pocari.png',
+    date: 'Apr 17, 2025',
   },
   {
     title: 'How a Leadership Coach Can Help You Spot Untapped Opportunities',
-    href: 'https://www.richpham.com/post/how-a-leadership-coach-can-help-you-spot-untapped-opportunities',
+    href: '/blog/how-a-leadership-coach-can-help-you-spot-untapped-opportunities',
     image: '/images/about/blog-leadership-coach.jpg',
+    date: 'Jan 24, 2025',
   },
   {
     title: 'How Perseverance Builds Resilient Businesses',
-    href: 'https://www.richpham.com/post/how-perseverance-builds-resilient-businesses',
+    href: '/blog/how-perseverance-builds-resilient-businesses',
     image: '/images/about/blog-perseverance.jpg',
+    date: 'Jan 24, 2025',
   },
 ];
 
@@ -410,9 +413,8 @@ export default function AboutPage() {
                 <Link
                   key={post.href}
                   href={post.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="blog-card"
+                  style={{ border: '1px solid #E0E0E0' }}
                 >
                   <div style={{ position: 'relative', aspectRatio: '16/9' }}>
                     <Image
@@ -423,12 +425,12 @@ export default function AboutPage() {
                       style={{ objectFit: 'cover' }}
                     />
                   </div>
-                  <div style={{ padding: '24px' }}>
+                  <div style={{ padding: '20px 24px 24px' }}>
+                    <p style={{ fontSize: '12px', color: '#999999', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>
+                      {post.date}
+                    </p>
                     <p className="blog-card-title" style={{ fontSize: '16px', fontWeight: 800, lineHeight: 1.4, fontFamily: "'NunitoSans', sans-serif" }}>
                       {post.title}
-                    </p>
-                    <p className="blog-card-link" style={{ fontSize: '14px', marginTop: '12px', fontWeight: 800, fontFamily: "'NunitoSans', sans-serif" }}>
-                      Read more →
                     </p>
                   </div>
                 </Link>

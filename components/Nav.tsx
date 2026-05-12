@@ -110,7 +110,11 @@ export default function Nav() {
       {/* Mobile menu — always rendered, animated via maxHeight */}
       <div
         className="nav-mobile-menu"
-        style={{ maxHeight: menuOpen ? '400px' : '0' }}
+        style={{
+          maxHeight: menuOpen ? '400px' : '0',
+          padding: menuOpen ? '8px 0 20px' : '0',
+          borderTopColor: menuOpen ? '#E0E0E0' : 'transparent',
+        }}
       >
         {navLinks.map((link) => (
           <Link key={link.href} href={link.href} onClick={closeMenu}>

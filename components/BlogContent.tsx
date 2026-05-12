@@ -54,7 +54,7 @@ export default function BlogContent() {
         style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', background: '#001740', paddingTop: '72px' }}
         className="about-hero-grid"
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', padding: '80px 64px 80px 32px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', padding: '80px 64px 80px 32px' }} className="about-hero-text">
           <div style={{ maxWidth: '520px' }}>
             <h1
               style={{ fontSize: '56px', lineHeight: 1.1, fontWeight: 800, color: '#ffffff' }}

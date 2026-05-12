@@ -169,9 +169,7 @@ a { text-decoration: none; }
   .nav-links     { display: none; }
   .nav-hamburger { display: flex; }
   .nav-mobile-menu {
-    border-top-color: #E0E0E0;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    padding: 8px 0 20px;
+    transition: max-height 0.35s ease, padding 0.35s ease, border-top-color 0.35s ease;
   }
   .nav-mobile-menu a:not(.btn-blue) {
     display: block;
@@ -240,4 +238,7 @@ a { text-decoration: none; }
   .blog-h2           { font-size: 32px !important; }
   .blog-grid         { grid-template-columns: 1fr !important; }
   .blog-post-grid    { grid-template-columns: 1fr !important; }
+  .about-hero-grid   { grid-template-columns: 1fr !important; }
+  .about-hero-text   { padding: 48px 20px !important; justify-content: flex-start !important; }
+  .bio-grid          { grid-template-columns: 1fr !important; gap: 48px !important; }
 }
