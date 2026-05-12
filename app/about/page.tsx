@@ -301,8 +301,15 @@ export default function AboutPage() {
         {/* ── Global Experience ── */}
         <section style={{ background: '#ffffff', padding: '96px 0' }}>
           <div className="section-container">
+            {/* Heading */}
+            <h3
+              style={{ fontSize: '40px', lineHeight: 1.2, fontWeight: 800, color: '#0F2A71', marginBottom: '48px' }}
+              className="global-h3"
+            >
+              Extensive Global Experience
+            </h3>
             {/* Map — full width, no crop */}
-            <div style={{ width: '100%', marginBottom: '64px', textAlign: 'center' }}>
+            <div style={{ width: '100%', marginBottom: '56px' }}>
               <Image
                 src="/images/about/map.png"
                 alt="Global experience map"
@@ -311,59 +318,26 @@ export default function AboutPage() {
                 style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </div>
-            {/* 2-col: heading left | 2×2 grid right */}
+            {/* 4-col stats — no icons */}
             <div
-              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px' }}
               className="global-stats-grid"
             >
-              <h3
-                style={{ fontSize: '40px', lineHeight: 1.2, fontWeight: 800, color: '#0F2A71' }}
-                className="global-h3"
-              >
-                Extensive Global Experience
-              </h3>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '32px' }}>
-                {/* 11+ */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '12px' }}>
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="24" cy="24" r="18" stroke="#0F2A71" strokeWidth="2.5" />
-                    <ellipse cx="24" cy="24" rx="8" ry="18" stroke="#0F2A71" strokeWidth="2.5" />
-                    <line x1="6" y1="24" x2="42" y2="24" stroke="#0F2A71" strokeWidth="2.5" />
-                    <line x1="9" y1="15" x2="39" y2="15" stroke="#0F2A71" strokeWidth="2" />
-                    <line x1="9" y1="33" x2="39" y2="33" stroke="#0F2A71" strokeWidth="2" />
-                  </svg>
-                  <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif" }}>11+ Countries</p>
-                  <p style={{ fontSize: '13px', color: '#666666', lineHeight: 1.5 }}>Hands-on global experience across diverse markets.</p>
-                </div>
-                {/* 4/10 */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '12px' }}>
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="6" y="28" width="8" height="14" fill="#0F2A71" />
-                    <rect x="20" y="18" width="8" height="24" fill="#0F2A71" />
-                    <rect x="34" y="8" width="8" height="34" fill="#0F2A71" />
-                  </svg>
-                  <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif" }}>4 of Top 10</p>
-                  <p style={{ fontSize: '13px', color: '#666666', lineHeight: 1.5 }}>Fortune 500 leadership — Coca-Cola, J&amp;J, P&amp;G, Danone.</p>
-                </div>
-                {/* Cultural Adaptability */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '12px' }}>
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="24" cy="16" r="7" stroke="#0F2A71" strokeWidth="2.5" />
-                    <circle cx="10" cy="20" r="5" stroke="#0F2A71" strokeWidth="2.5" />
-                    <circle cx="38" cy="20" r="5" stroke="#0F2A71" strokeWidth="2.5" />
-                    <path d="M2 40c0-4.418 3.582-8 8-8h4M46 40c0-4.418-3.582-8-8-8h-4M14 40c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#0F2A71" strokeWidth="2.5" strokeLinecap="round" />
-                  </svg>
-                  <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif" }}>Cultural Adaptability</p>
-                  <p style={{ fontSize: '13px', color: '#666666', lineHeight: 1.5 }}>Diverse cultural insights driving global strategies.</p>
-                </div>
-                {/* Operational Excellence */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '12px' }}>
-                  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M24 6l4.5 9 10 1.5-7.25 7 1.7 10L24 29l-8.95 4.5 1.7-10L9.5 16.5 19.5 15z" stroke="#0F2A71" strokeWidth="2.5" strokeLinejoin="round" />
-                  </svg>
-                  <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif" }}>Operational Excellence</p>
-                  <p style={{ fontSize: '13px', color: '#666666', lineHeight: 1.5 }}>Effective management practices enhancing performance.</p>
-                </div>
+              <div>
+                <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>11+ Countries</p>
+                <p style={{ fontSize: '14px', color: '#666666', lineHeight: 1.6 }}>Hands-on global experience, leading and adapting across diverse markets.</p>
+              </div>
+              <div>
+                <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>4 of Top 10</p>
+                <p style={{ fontSize: '14px', color: '#666666', lineHeight: 1.6 }}>Senior leadership in Fortune 500 companies — Coca-Cola, J&amp;J, P&amp;G, and Danone.</p>
+              </div>
+              <div>
+                <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>Cultural Adaptability</p>
+                <p style={{ fontSize: '14px', color: '#666666', lineHeight: 1.6 }}>Leveraged diverse cultural insights to drive global strategies.</p>
+              </div>
+              <div>
+                <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>Operational Excellence</p>
+                <p style={{ fontSize: '14px', color: '#666666', lineHeight: 1.6 }}>Enhanced performance through effective management practices.</p>
               </div>
             </div>
           </div>
