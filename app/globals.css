@@ -206,11 +206,10 @@ a { text-decoration: none; }
   .footer-bottom { flex-direction: column !important; gap: 16px !important; align-items: flex-start !important; }
 
   /* About page */
-  .about-hero-grid   { grid-template-columns: 1fr !important; }
+  .about-hero-inner  { grid-template-columns: 1fr !important; gap: 0 !important; }
   .about-hero-h1     { font-size: 44px !important; }
   .about-hero-sub    { font-size: 18px !important; }
-  .about-hero-img    { min-height: 300px !important; aspect-ratio: 3/4; }
-  .bio-grid          { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .about-hero-img    { max-height: 380px !important; margin-bottom: -80px !important; aspect-ratio: 3/4; }
   .approach-h2       { font-size: 32px !important; }
   .pocari-grid       { grid-template-columns: 1fr !important; }
   .pocari-h2         { font-size: 28px !important; }

@@ -67,94 +67,86 @@ export default function AboutPage() {
         {/* ── Hero ── */}
         <section
           style={{
-            background: '#ffffff',
+            background: '#0F2A71',
             paddingTop: '72px',
-            minHeight: '60vh',
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            overflow: 'hidden',
+            overflow: 'visible',
           }}
           className="about-hero-grid"
         >
           <div
             style={{
-              padding: '80px 64px 80px 32px',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              maxWidth: '680px',
-              marginLeft: 'auto',
+              maxWidth: '1200px',
+              margin: '0 auto',
+              padding: '0 32px',
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '80px',
+              alignItems: 'start',
             }}
+            className="about-hero-inner"
           >
-            <h1
-              style={{
-                fontSize: '72px',
-                lineHeight: 1.05,
-                fontWeight: 800,
-                color: '#000000',
-                marginBottom: '24px',
-              }}
-              className="about-hero-h1"
-            >
-              Leadership is the <span style={{ color: '#0F2A71' }}>engine.</span>
-            </h1>
-            <p
-              style={{
-                fontSize: '24px',
-                lineHeight: 1.4,
-                color: '#444444',
-                fontWeight: 800,
-                fontFamily: "'NunitoSans', sans-serif",
-              }}
-              className="about-hero-sub"
-            >
-              Strategy is the plan. Implementation is the race.
-            </p>
-          </div>
-          <div style={{ position: 'relative', minHeight: '400px' }} className="about-hero-img">
-            <Image
-              src="/images/about/rich.jpg"
-              alt="Rich Pham"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: 'cover' }}
-              priority
-            />
-          </div>
-        </section>
-
-        {/* ── Bio Introduction ── */}
-        <section style={{ background: '#F4F4F4', padding: '96px 0' }}>
-          <div className="section-container">
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gap: '80px',
-                alignItems: 'center',
-              }}
-              className="bio-grid"
-            >
-              <div>
-                <p style={{ fontSize: '17px', lineHeight: 1.75, color: '#000000', marginBottom: '24px' }}>
-                  My name is Rich Pham. I rose from entry-level roles to the C-suite, founded multiple companies, and earned my MBA from the University of Chicago Booth School of Business, joining a global network of top-tier leaders. I've experienced the full journey — failures, growth, and the hands-on work of building businesses across industries and countries.
-                </p>
-                <p style={{ fontSize: '17px', lineHeight: 1.75, color: '#000000' }}>
-                  Now, I help C-level executives and owners do the same. Every business hits a plateau, and that's where real experience matters. Whether you're trying to get unstuck, lead more effectively, or build systems that free you to focus on the bigger picture, I bring the clarity and perspective to help you move forward with confidence.
+            {/* Left: heading + photo */}
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ padding: '72px 0 48px' }}>
+                <h1
+                  style={{
+                    fontSize: '72px',
+                    lineHeight: 1.05,
+                    fontWeight: 800,
+                    color: '#ffffff',
+                    marginBottom: '28px',
+                  }}
+                  className="about-hero-h1"
+                >
+                  Leadership<br />is the engine.
+                </h1>
+                <p
+                  style={{
+                    fontSize: '20px',
+                    lineHeight: 1.5,
+                    color: 'rgba(255,255,255,0.85)',
+                    fontWeight: 800,
+                    fontFamily: "'NunitoSans', sans-serif",
+                  }}
+                  className="about-hero-sub"
+                >
+                  Strategy is the plan. Implementation is the race.
                 </p>
               </div>
-              <div style={{ position: 'relative', borderRadius: '6px', overflow: 'hidden', aspectRatio: '4/3' }}>
+              {/* Photo — bleeds below section */}
+              <div
+                style={{ position: 'relative', width: '100%', aspectRatio: '3/4', maxHeight: '520px', marginBottom: '-120px' }}
+                className="about-hero-img"
+              >
                 <Image
-                  src="/images/about/map.png"
-                  alt="Global experience map"
+                  src="/images/about/rich.jpg"
+                  alt="Rich Pham"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  style={{ objectFit: 'cover', borderRadius: '6px' }}
+                  style={{ objectFit: 'cover', objectPosition: 'top' }}
+                  priority
                 />
+              </div>
+            </div>
+
+            {/* Right: bio text + signature */}
+            <div style={{ padding: '72px 0 80px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <p style={{ fontSize: '17px', lineHeight: 1.8, color: 'rgba(255,255,255,0.9)', marginBottom: '28px' }}>
+                My name is Rich Pham. I rose from <strong style={{ color: '#ffffff' }}>entry-level roles to the C-suite</strong>, founded multiple companies, and earned my <strong style={{ color: '#ffffff' }}>MBA from the University of Chicago Booth School of Business</strong>, joining a global network of top-tier leaders. I've experienced the full journey — failures, growth, and the hands-on work of building businesses across industries and countries.
+              </p>
+              <p style={{ fontSize: '17px', lineHeight: 1.8, color: 'rgba(255,255,255,0.9)', marginBottom: '40px' }}>
+                Now, <strong style={{ color: '#ffffff' }}>I help C-level executives and owners do the same.</strong> Every business hits a plateau, and that's where real experience matters. Whether you're trying to get unstuck, lead more effectively, or build systems that free you to focus on the bigger picture, I bring the clarity and perspective to help you move forward with confidence.
+              </p>
+              <div>
+                <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '28px', color: '#ffffff', marginBottom: '8px' }}>Rich Pham</p>
+                <p style={{ fontFamily: "'NunitoSans', sans-serif", fontWeight: 800, fontSize: '15px', color: 'rgba(255,255,255,0.7)' }}>Rich Pham</p>
               </div>
             </div>
           </div>
         </section>
+
+        {/* Spacer to account for photo bleed */}
+        <div style={{ background: '#ffffff', paddingTop: '140px' }} />
 
         {/* ── My Approach ── */}
         <AboutApproach />
