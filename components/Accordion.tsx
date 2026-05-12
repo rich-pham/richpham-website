@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const tabs = [
   {
@@ -97,6 +97,158 @@ const tabs = [
   },
 ];
 
+function AccordionItem({
+  tab,
+  isActive,
+  onClick,
+}: {
+  tab: (typeof tabs)[0];
+  isActive: boolean;
+  onClick: () => void;
+}) {
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div style={{ borderBottom: '1px solid #E0E0E0' }}>
+      <button
+        onClick={onClick}
+        style={{
+          width: '100%',
+          background: isActive ? '#F4F4F4' : '#ffffff',
+          border: 'none',
+          cursor: 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '24px 32px',
+          textAlign: 'left',
+          transition: 'background 0.25s ease',
+        }}
+      >
+        <span
+          style={{
+            fontSize: '18px',
+            fontFamily: "'NunitoSans', sans-serif",
+            fontWeight: 800,
+            color: isActive ? '#0F2A71' : '#000000',
+            transition: 'color 0.25s ease',
+          }}
+        >
+          {tab.label}
+        </span>
+        <span
+          style={{
+            color: isActive ? '#0F2A71' : '#A8B2BD',
+            fontSize: '16px',
+            transition: 'transform 0.3s ease, color 0.25s ease',
+            transform: isActive ? 'rotate(180deg)' : 'rotate(0deg)',
+            display: 'inline-block',
+            flexShrink: 0,
+          }}
+        >
+          ↓
+        </span>
+      </button>
+
+      {/* Animated content panel */}
+      <div
+        ref={contentRef}
+        style={{
+          overflow: 'hidden',
+          maxHeight: isActive ? `${contentRef.current?.scrollHeight ?? 1000}px` : '0px',
+          transition: 'max-height 0.35s ease',
+          background: '#F4F4F4',
+        }}
+      >
+        <div style={{ padding: '4px 32px 28px' }}>
+          <h3
+            style={{
+              fontSize: '19px',
+              lineHeight: 1.3,
+              color: '#0F2A71',
+              marginBottom: '10px',
+              fontWeight: 800,
+            }}
+          >
+            {tab.heading}
+          </h3>
+          <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#000000', marginBottom: '18px' }}>
+            {tab.intro}
+          </p>
+
+          {tab.sections.map((section) => (
+            <div key={section.title} style={{ marginBottom: '14px' }}>
+              <p
+                style={{
+                  fontSize: '13px',
+                  fontWeight: 800,
+                  color: '#0F2A71',
+                  marginBottom: '6px',
+                  fontFamily: "'NunitoSans', sans-serif",
+                }}
+              >
+                {section.title}
+              </p>
+              <ul style={{ margin: 0, paddingLeft: '0', listStyle: 'none' }}>
+                {section.items.map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      fontSize: '14px',
+                      lineHeight: 1.6,
+                      color: '#000000',
+                      marginBottom: '4px',
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '8px',
+                    }}
+                  >
+                    <span style={{ color: '#0F2A71', fontWeight: 800, flexShrink: 0, marginTop: '1px' }}>•</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div>
+            <p
+              style={{
+                fontSize: '13px',
+                fontWeight: 800,
+                color: '#0F2A71',
+                marginBottom: '6px',
+                fontFamily: "'NunitoSans', sans-serif",
+              }}
+            >
+              {tab.when.title}
+            </p>
+            <ul style={{ margin: 0, paddingLeft: '0', listStyle: 'none' }}>
+              {tab.when.items.map((item) => (
+                <li
+                  key={item}
+                  style={{
+                    fontSize: '14px',
+                    lineHeight: 1.6,
+                    color: '#000000',
+                    marginBottom: '4px',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '8px',
+                  }}
+                >
+                  <span style={{ color: '#0F2A71', fontWeight: 800, flexShrink: 0, marginTop: '1px' }}>•</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Accordion() {
   const [active, setActive] = useState(0);
 
@@ -120,192 +272,65 @@ export default function Accordion() {
             fontSize: '18px',
             lineHeight: 1.5,
             color: '#000000',
-            marginBottom: '56px',
+            marginBottom: '48px',
             maxWidth: '680px',
           }}
         >
           Over the years, I've learned that businesses rarely stall because of strategy or effort. They stall because the leadership system that created early success no longer fits the scale of the company. That tension shows up differently depending on who is at the top.
         </p>
 
-        {/* 3-column 2:1:1 */}
+        {/* 2-column 1:1 */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: '2fr 1fr 1fr',
+            gridTemplateColumns: '1fr 1fr',
             gap: '0',
-            minHeight: '520px',
             border: '1px solid #E0E0E0',
             borderRadius: '6px',
             overflow: 'hidden',
+            minHeight: '520px',
           }}
         >
-          {/* Col 1 — Accordion (2fr) */}
-          <div style={{ borderRight: '1px solid #E0E0E0', padding: '0' }}>
+          {/* Col 1 — Accordion */}
+          <div style={{ borderRight: '1px solid #E0E0E0' }}>
             {tabs.map((tab, i) => (
-              <div
+              <AccordionItem
                 key={tab.id}
-                style={{ borderBottom: i < tabs.length - 1 ? '1px solid #E0E0E0' : 'none' }}
-              >
-                <button
-                  onClick={() => setActive(i)}
-                  style={{
-                    width: '100%',
-                    background: active === i ? '#F4F4F4' : '#ffffff',
-                    border: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    padding: '24px 32px',
-                    textAlign: 'left',
-                    transition: 'background 0.2s ease',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: '18px',
-                      fontFamily: "'NunitoSans', sans-serif",
-                      fontWeight: 800,
-                      color: active === i ? '#0F2A71' : '#000000',
-                      transition: 'color 0.2s ease',
-                    }}
-                  >
-                    {tab.label}
-                  </span>
-                  <span
-                    style={{
-                      color: active === i ? '#0F2A71' : '#A8B2BD',
-                      fontSize: '16px',
-                      transition: 'transform 0.2s ease, color 0.2s ease',
-                      transform: active === i ? 'rotate(180deg)' : 'rotate(0deg)',
-                      display: 'inline-block',
-                      flexShrink: 0,
-                    }}
-                  >
-                    ↓
-                  </span>
-                </button>
-
-                {active === i && (
-                  <div style={{ padding: '0 32px 28px', background: '#F4F4F4' }}>
-                    <h3
-                      style={{
-                        fontSize: '20px',
-                        lineHeight: 1.3,
-                        color: '#0F2A71',
-                        marginBottom: '12px',
-                        fontWeight: 800,
-                      }}
-                    >
-                      {tab.heading}
-                    </h3>
-                    <p
-                      style={{
-                        fontSize: '15px',
-                        lineHeight: 1.6,
-                        color: '#000000',
-                        marginBottom: '20px',
-                      }}
-                    >
-                      {tab.intro}
-                    </p>
-                    {tab.sections.map((section) => (
-                      <div key={section.title} style={{ marginBottom: '14px' }}>
-                        <p
-                          style={{
-                            fontSize: '13px',
-                            fontWeight: 800,
-                            color: '#0F2A71',
-                            marginBottom: '6px',
-                            fontFamily: "'NunitoSans', sans-serif",
-                          }}
-                        >
-                          {section.title}
-                        </p>
-                        <ul style={{ margin: 0, paddingLeft: '18px' }}>
-                          {section.items.map((item) => (
-                            <li
-                              key={item}
-                              style={{
-                                fontSize: '14px',
-                                lineHeight: 1.6,
-                                color: '#000000',
-                                marginBottom: '3px',
-                              }}
-                            >
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                    <div>
-                      <p
-                        style={{
-                          fontSize: '13px',
-                          fontWeight: 800,
-                          color: '#0F2A71',
-                          marginBottom: '6px',
-                          fontFamily: "'NunitoSans', sans-serif",
-                        }}
-                      >
-                        {tab.when.title}
-                      </p>
-                      <ul style={{ margin: 0, paddingLeft: '18px' }}>
-                        {tab.when.items.map((item) => (
-                          <li
-                            key={item}
-                            style={{
-                              fontSize: '14px',
-                              lineHeight: 1.6,
-                              color: '#000000',
-                              marginBottom: '3px',
-                            }}
-                          >
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                )}
-              </div>
+                tab={tab}
+                isActive={active === i}
+                onClick={() => setActive(i)}
+              />
             ))}
           </div>
 
-          {/* Col 2 — Image (1fr) */}
-          <div style={{ position: 'relative', borderRight: '1px solid #E0E0E0' }}>
-            <Image
-              src={tabs[active].image}
-              alt={tabs[active].label}
-              fill
-              sizes="25vw"
-              style={{ objectFit: 'cover', transition: 'opacity 0.3s ease' }}
-            />
-          </div>
+          {/* Col 2 — Image (top) + CTA (bottom) */}
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            {/* Row 1: image */}
+            <div style={{ position: 'relative', flex: 1, minHeight: '300px' }}>
+              <Image
+                src={tabs[active].image}
+                alt={tabs[active].label}
+                fill
+                sizes="50vw"
+                style={{ objectFit: 'cover', transition: 'opacity 0.3s ease' }}
+              />
+            </div>
 
-          {/* Col 3 — Static closing panel (1fr) */}
-          <div
-            style={{
-              background: '#0F2A71',
-              padding: '40px 32px',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-            }}
-          >
-            <div>
-              <p
-                style={{
-                  fontSize: '15px',
-                  lineHeight: 1.7,
-                  color: 'rgba(255,255,255,0.85)',
-                  marginBottom: '20px',
-                }}
-              >
+            {/* Row 2: CTA panel */}
+            <div
+              style={{
+                background: '#0F2A71',
+                padding: '36px 36px',
+                borderTop: '1px solid rgba(255,255,255,0.10)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '16px',
+              }}
+            >
+              <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.85)', margin: 0 }}>
                 Across all three situations, the work is the same at its core:
               </p>
-              <ul style={{ margin: '0 0 20px', paddingLeft: '18px' }}>
+              <ul style={{ margin: 0, paddingLeft: '0', listStyle: 'none' }}>
                 {['Clarify decisions', 'Build leadership confidence', 'Remove the bottlenecks that limit scale'].map((item) => (
                   <li
                     key={item}
@@ -313,27 +338,26 @@ export default function Accordion() {
                       fontSize: '14px',
                       lineHeight: 1.7,
                       color: 'rgba(255,255,255,0.85)',
-                      marginBottom: '4px',
+                      marginBottom: '2px',
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: '8px',
                     }}
                   >
+                    <span style={{ color: '#F4D462', fontWeight: 800, flexShrink: 0 }}>•</span>
                     {item}
                   </li>
                 ))}
               </ul>
-              <p
-                style={{
-                  fontSize: '15px',
-                  lineHeight: 1.7,
-                  color: 'rgba(255,255,255,0.85)',
-                  marginBottom: '32px',
-                }}
-              >
+              <p style={{ fontSize: '15px', lineHeight: 1.7, color: 'rgba(255,255,255,0.85)', margin: 0 }}>
                 If you recognize your situation here, that's usually the right moment to start the conversation.
               </p>
+              <div>
+                <Link href="/contact" className="btn-blue">
+                  Start the Conversation
+                </Link>
+              </div>
             </div>
-            <Link href="/contact" className="btn-blue">
-              Start the Conversation
-            </Link>
           </div>
         </div>
       </div>
