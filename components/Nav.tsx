@@ -79,7 +79,7 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <Link href="/contact" className="btn-blue">
+          <Link href="/contact#form" className="btn-blue">
             Invite Rich to Speak
           </Link>
         </div>
@@ -118,7 +118,7 @@ export default function Nav() {
           </Link>
         ))}
         <div className="nav-mobile-cta">
-          <Link href="/contact" className="btn-blue" onClick={closeMenu}>
+          <Link href="/contact#form" className="btn-blue" onClick={closeMenu}>
             Invite Rich to Speak
           </Link>
         </div>

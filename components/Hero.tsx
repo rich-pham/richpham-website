@@ -51,7 +51,7 @@ export default function Hero() {
             </p>
 
             <div style={{ flexShrink: 0 }}>
-              <Link href="/contact" className="btn-blue" style={{ whiteSpace: 'nowrap' }}>
+              <Link href="/contact#form" className="btn-blue" style={{ whiteSpace: 'nowrap' }}>
                 Start the Conversation →
               </Link>
             </div>

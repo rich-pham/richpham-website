@@ -34,7 +34,7 @@ export default function CTABanner() {
           If you're navigating a stage where leadership decisions carry more weight than effort, a short conversation can help clarify whether the work makes sense. No pitch deck. No pressure.
         </p>
         <div>
-          <Link href="/contact" className="btn-blue">
+          <Link href="/contact#form" className="btn-blue">
             Start the Conversation →
           </Link>
         </div>

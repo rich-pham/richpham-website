@@ -354,7 +354,7 @@ export default function Accordion() {
                 If you recognize your situation here, that's usually the right moment to start the conversation.
               </p>
               <div>
-                <Link href="/contact" className="btn-blue">
+                <Link href="/contact#form" className="btn-blue">
                   Start the Conversation
                 </Link>
               </div>

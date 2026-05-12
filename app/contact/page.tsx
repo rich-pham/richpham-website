@@ -15,11 +15,11 @@ const services = [
     heading: 'Speaking',
     body: "I speak on leadership, entrepreneurship, breaking through stereotypes, and the lessons I've learned from building and advising businesses. Let's talk about your audience and how I can bring value to your event.",
     icon: (
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="14" y="4" width="12" height="20" rx="6" stroke="#0F2A71" strokeWidth="2.5" />
-        <path d="M7 20c0 7.18 5.82 13 13 13s13-5.82 13-13" stroke="#0F2A71" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="20" y1="33" x2="20" y2="38" stroke="#0F2A71" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="14" y1="38" x2="26" y2="38" stroke="#0F2A71" strokeWidth="2.5" strokeLinecap="round" />
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="6" width="16" height="26" rx="8" stroke="#F4D462" strokeWidth="2.5" />
+        <path d="M10 28c0 9.941 8.059 18 18 18s18-8.059 18-18" stroke="#F4D462" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="28" y1="46" x2="28" y2="52" stroke="#F4D462" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="20" y1="52" x2="36" y2="52" stroke="#F4D462" strokeWidth="2.5" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -27,12 +27,12 @@ const services = [
     heading: 'Coaching',
     body: "Whether you're a founder, executive, or emerging leader, I offer coaching that's grounded in 30+ years of experience. Together, we'll clarify your goals, tackle challenges, and develop a path forward that aligns with how you want to lead and grow.",
     icon: (
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="16" r="10" stroke="#0F2A71" strokeWidth="2.5" />
-        <path d="M15 16a5 5 0 0 1 5-5" stroke="#0F2A71" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="20" y1="26" x2="20" y2="30" stroke="#0F2A71" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="15" y1="30" x2="25" y2="30" stroke="#0F2A71" strokeWidth="2" strokeLinecap="round" />
-        <line x1="17" y1="34" x2="23" y2="34" stroke="#0F2A71" strokeWidth="2" strokeLinecap="round" />
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="28" cy="22" r="14" stroke="#F4D462" strokeWidth="2.5" />
+        <path d="M21 22a7 7 0 0 1 7-7" stroke="#F4D462" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="28" y1="36" x2="28" y2="42" stroke="#F4D462" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="21" y1="42" x2="35" y2="42" stroke="#F4D462" strokeWidth="2" strokeLinecap="round" />
+        <line x1="24" y1="48" x2="32" y2="48" stroke="#F4D462" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -40,11 +40,11 @@ const services = [
     heading: 'Board Positions',
     body: "I bring a strategic mindset, governance experience, and a deep understanding of business growth to the boardroom. Let's explore how I can support your organization as a Non-Executive Director or Advisory Board Member.",
     icon: (
-      <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="4" y="14" width="32" height="22" rx="2" stroke="#0F2A71" strokeWidth="2.5" />
-        <path d="M13 14V10a7 7 0 0 1 14 0v4" stroke="#0F2A71" strokeWidth="2.5" strokeLinecap="round" />
-        <line x1="4" y1="23" x2="36" y2="23" stroke="#0F2A71" strokeWidth="2" />
-        <rect x="16" y="19" width="8" height="8" rx="1" fill="#0F2A71" />
+      <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="20" width="44" height="30" rx="2" stroke="#F4D462" strokeWidth="2.5" />
+        <path d="M18 20V14a10 10 0 0 1 20 0v6" stroke="#F4D462" strokeWidth="2.5" strokeLinecap="round" />
+        <line x1="6" y1="32" x2="50" y2="32" stroke="#F4D462" strokeWidth="2" />
+        <rect x="22" y="26" width="12" height="12" rx="1" fill="#F4D462" />
       </svg>
     ),
   },
@@ -56,32 +56,16 @@ export default function ContactPage() {
       <Nav />
       <main>
 
-        {/* ── Hero ── */}
+        {/* ── Hero — full-bleed 1:1 split ── */}
         <section
-          style={{ background: '#001740', paddingTop: '72px', overflow: 'hidden' }}
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', background: '#001740', paddingTop: '72px' }}
+          className="about-hero-grid"
         >
-          <div
-            style={{
-              maxWidth: '1200px',
-              margin: '0 auto',
-              padding: '0 32px',
-              display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '80px',
-              alignItems: 'center',
-            }}
-            className="about-hero-inner"
-          >
-            {/* Left: text */}
-            <div style={{ padding: '80px 0' }}>
+          {/* Left: text — right-aligned within column */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', padding: '80px 64px 80px 32px' }}>
+            <div style={{ maxWidth: '520px' }}>
               <h1
-                style={{
-                  fontSize: '56px',
-                  lineHeight: 1.1,
-                  fontWeight: 800,
-                  color: '#ffffff',
-                  marginBottom: '28px',
-                }}
+                style={{ fontSize: '56px', lineHeight: 1.1, fontWeight: 800, color: '#ffffff', marginBottom: '28px' }}
                 className="about-hero-h1"
               >
                 Let's Work Together
@@ -93,21 +77,18 @@ export default function ContactPage() {
                 Drop me a message, and let&apos;s see how we can work together.
               </p>
             </div>
+          </div>
 
-            {/* Right: Rich's image */}
-            <div
-              style={{ position: 'relative', alignSelf: 'end', aspectRatio: '3/4', maxHeight: '520px', marginBottom: '-1px' }}
-              className="about-hero-img"
-            >
-              <Image
-                src="/images/about/rich.jpg"
-                alt="Rich Pham"
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ objectFit: 'cover', objectPosition: 'top' }}
-                priority
-              />
-            </div>
+          {/* Right: full-bleed image, 3:4 ratio */}
+          <div style={{ position: 'relative', aspectRatio: '3/4' }} className="about-hero-img">
+            <Image
+              src="/images/about/rich.jpg"
+              alt="Rich Pham"
+              fill
+              sizes="50vw"
+              style={{ objectFit: 'cover', objectPosition: 'top' }}
+              priority
+            />
           </div>
         </section>
 
@@ -115,13 +96,7 @@ export default function ContactPage() {
         <section style={{ background: '#ffffff', padding: '96px 0' }}>
           <div className="section-container">
             <h3
-              style={{
-                fontSize: '36px',
-                lineHeight: 1.2,
-                fontWeight: 800,
-                color: '#0F2A71',
-                marginBottom: '56px',
-              }}
+              style={{ fontSize: '36px', lineHeight: 1.2, fontWeight: 800, color: '#0F2A71', marginBottom: '56px' }}
             >
               Ways to Work With Me
             </h3>
@@ -133,19 +108,11 @@ export default function ContactPage() {
                 <div key={s.heading}>
                   <div style={{ marginBottom: '20px' }}>{s.icon}</div>
                   <h4
-                    style={{
-                      fontSize: '20px',
-                      fontWeight: 800,
-                      color: '#0F2A71',
-                      fontFamily: "'NunitoSans', sans-serif",
-                      marginBottom: '14px',
-                    }}
+                    style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '14px' }}
                   >
                     {s.heading}
                   </h4>
-                  <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#444444' }}>
-                    {s.body}
-                  </p>
+                  <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#444444' }}>{s.body}</p>
                 </div>
               ))}
             </div>
@@ -153,7 +120,7 @@ export default function ContactPage() {
         </section>
 
         {/* ── Contact Form ── */}
-        <section style={{ background: '#0F2A71', padding: '96px 0' }}>
+        <section id="form" style={{ background: '#0F2A71', padding: '96px 0' }}>
           <div className="section-container">
             <div
               style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}
@@ -161,13 +128,7 @@ export default function ContactPage() {
             >
               <div>
                 <h3
-                  style={{
-                    fontSize: '36px',
-                    lineHeight: 1.2,
-                    fontWeight: 800,
-                    color: '#ffffff',
-                    marginBottom: '20px',
-                  }}
+                  style={{ fontSize: '36px', lineHeight: 1.2, fontWeight: 800, color: '#ffffff', marginBottom: '20px' }}
                 >
                   Anything Else?
                 </h3>
