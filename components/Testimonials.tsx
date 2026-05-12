@@ -35,7 +35,7 @@ export default function Testimonials() {
       <div className="section-container">
         <h2
           className="testimonials-h2"
-          style={{ fontSize: '48px', lineHeight: 1.2, color: '#0F2A71', marginBottom: '56px' }}
+          style={{ fontSize: '48px', lineHeight: 1.2, color: '#ff0000', marginBottom: '56px' }}
         >
           Hear from Top Executives
         </h2>
@@ -66,12 +66,12 @@ export default function Testimonials() {
                     <Image src={t.photo} alt={t.name} fill sizes="48px" style={{ objectFit: 'cover' }} />
                   </div>
                 ) : (
-                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#0F2A71', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif", fontWeight: 800, fontSize: '18px' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#ff0000', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif", fontWeight: 800, fontSize: '18px' }}>
                     {t.name.charAt(0)}
                   </div>
                 )}
                 <div>
-                  <div style={{ fontSize: '16px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif" }}>{t.name}</div>
+                  <div style={{ fontSize: '16px', fontWeight: 800, color: '#ff0000', fontFamily: "'NunitoSans', sans-serif" }}>{t.name}</div>
                   <div style={{ fontSize: '14px', color: '#000000', lineHeight: 1.5 }}>{t.role}</div>
                 </div>
               </div>

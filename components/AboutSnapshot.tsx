@@ -20,7 +20,7 @@ export default function AboutSnapshot() {
       <div
         className="about-content"
         style={{
-          background: '#0F2A71',
+          background: '#ff0000',
           padding: '72px 72px',
           display: 'flex',
           flexDirection: 'column',
