@@ -239,4 +239,5 @@ a { text-decoration: none; }
   .racing-h3         { font-size: 28px !important; }
   .blog-h2           { font-size: 32px !important; }
   .blog-grid         { grid-template-columns: 1fr !important; }
+  .blog-post-grid    { grid-template-columns: 1fr !important; }
 }
