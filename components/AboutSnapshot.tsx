@@ -31,9 +31,6 @@ export default function AboutSnapshot() {
           </div>
 
           <div>
-            <p className="eyebrow" style={{ color: '#0F2A71', marginBottom: '16px' }}>
-              Executive Advisor
-            </p>
             <h2
               style={{
                 fontSize: '48px',

@@ -109,9 +109,6 @@ export default function Accordion() {
   return (
     <section style={{ background: '#0F2A71', padding: '96px 0' }}>
       <div className="section-container">
-        <p className="eyebrow" style={{ color: '#F4D462', marginBottom: '16px' }}>
-          30+ Years
-        </p>
         <h2
           style={{
             fontSize: '48px',

@@ -7,9 +7,6 @@ export default function CTABanner() {
         className="section-container"
         style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto' }}
       >
-        <p className="eyebrow" style={{ color: '#F4D462', marginBottom: '16px' }}>
-          Executive Advisory
-        </p>
         <h2
           style={{
             fontSize: '48px',

@@ -37,9 +37,6 @@ export default function Testimonials() {
   return (
     <section style={{ background: '#F4F4F4', padding: '96px 0' }}>
       <div className="section-container">
-        <p className="eyebrow" style={{ color: '#0F2A71', marginBottom: '16px' }}>
-          Social Proof
-        </p>
         <h2
           style={{
             fontSize: '48px',
