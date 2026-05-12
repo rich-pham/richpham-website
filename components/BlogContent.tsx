@@ -21,7 +21,7 @@ const posts = [
     href: "https://www.richpham.com/post/how-to-find-your-competitive-edge-on-and-off-the-race-track",
     image: "/images/about/world-class-racing-driver.jpg",
     category: "Racing Through Life",
-    date: "",
+    date: "Jan 21, 2025",
     readTime: "",
   },
   {
@@ -69,7 +69,7 @@ const posts = [
     href: "https://www.richpham.com/post/how-a-leadership-coach-can-help-you-spot-untapped-opportunities",
     image: "/images/about/blog-leadership-coach.jpg",
     category: "Reinvent to Succeed",
-    date: "",
+    date: "Jan 24, 2025",
     readTime: "",
   },
   {
@@ -77,7 +77,7 @@ const posts = [
     href: "https://www.richpham.com/post/how-perseverance-builds-resilient-businesses",
     image: "/images/about/blog-perseverance.jpg",
     category: "Reinvent to Succeed",
-    date: "",
+    date: "Jan 24, 2025",
     readTime: "",
   },
 ];
@@ -219,9 +219,9 @@ export default function BlogContent() {
                   )}
 
                   {/* Date */}
-                  {(post.date || post.readTime) && (
+                  {post.date && (
                     <p style={{ fontSize: '12px', color: '#999999', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>
-                      {[post.date, post.readTime].filter(Boolean).join(' · ')}
+                      {post.date}
                     </p>
                   )}
 
