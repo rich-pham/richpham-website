@@ -1,6 +1,5 @@
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
-import StatsBar from '@/components/StatsBar';
 import AboutSnapshot from '@/components/AboutSnapshot';
 import Accordion from '@/components/Accordion';
 import Testimonials from '@/components/Testimonials';
@@ -13,7 +12,6 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <StatsBar />
         <AboutSnapshot />
         <Accordion />
         <Testimonials />

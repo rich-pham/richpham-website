@@ -10,6 +10,20 @@ const footerLinks = [
   { label: 'Contact', href: '/contact' },
 ];
 
+function LinkedInIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+    >
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   const [email, setEmail] = useState('');
 
@@ -35,33 +49,12 @@ export default function Footer() {
                 marginBottom: '16px',
               }}
             >
-              Rich Pham
+              RICH PHAM
             </div>
-            <p
-              style={{
-                fontSize: '14px',
-                lineHeight: 1.6,
-                color: 'rgba(255,255,255,0.65)',
-              }}
-            >
-              Executive Advisor for Scaling CEOs, Founders, and Boards.
-            </p>
           </div>
 
-          {/* Links */}
+          {/* Links — no "Navigation" label */}
           <div>
-            <p
-              style={{
-                fontSize: '12px',
-                fontWeight: 800,
-                fontFamily: "'NunitoSans', sans-serif",
-                color: 'rgba(255,255,255,0.65)',
-                textTransform: 'uppercase',
-                marginBottom: '16px',
-              }}
-            >
-              Navigation
-            </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               {footerLinks.map((link) => (
                 <Link
@@ -73,7 +66,7 @@ export default function Footer() {
                     textDecoration: 'none',
                     transition: 'color 0.2s ease',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = '#F4D462')}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.65)')}
                 >
                   {link.label}
@@ -82,20 +75,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Newsletter */}
+          {/* Newsletter — no "Newsletter" label */}
           <div>
-            <p
-              style={{
-                fontSize: '12px',
-                fontWeight: 800,
-                fontFamily: "'NunitoSans', sans-serif",
-                color: 'rgba(255,255,255,0.65)',
-                textTransform: 'uppercase',
-                marginBottom: '16px',
-              }}
-            >
-              Newsletter
-            </p>
             <p
               style={{
                 fontSize: '14px',
@@ -106,31 +87,25 @@ export default function Footer() {
             >
               Join the Leadership &amp; Growth Newsletter
             </p>
-            <div style={{ display: 'flex', gap: '0' }}>
+            <div style={{ display: 'flex', gap: '8px' }}>
               <input
                 type="email"
                 placeholder="Your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
-                  background: 'transparent',
+                  background: 'rgba(255,255,255,0.10)',
                   border: 'none',
-                  borderBottom: '1px solid #A8B2BD',
-                  borderRadius: '0',
-                  padding: '10px 0',
+                  outline: 'none',
+                  borderRadius: '6px',
+                  padding: '10px 14px',
                   fontSize: '14px',
                   color: '#ffffff',
-                  outline: 'none',
                   flex: 1,
                   fontFamily: "'NunitoSans', sans-serif",
                 }}
-                onFocus={(e) => (e.target.style.borderBottomColor = '#0F2A71')}
-                onBlur={(e) => (e.target.style.borderBottomColor = '#A8B2BD')}
               />
-              <button
-                className="btn-primary"
-                style={{ borderRadius: '0 6px 6px 0', padding: '10px 20px', fontSize: '13px' }}
-              >
+              <button className="btn-blue" style={{ padding: '10px 18px', fontSize: '13px', whiteSpace: 'nowrap' }}>
                 Subscribe
               </button>
             </div>
@@ -148,15 +123,16 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                fontSize: '14px',
                 color: 'rgba(255,255,255,0.65)',
                 textDecoration: 'none',
                 transition: 'color 0.2s ease',
+                display: 'flex',
+                alignItems: 'center',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#F4D462')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#ffffff')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.65)')}
             >
-              LinkedIn
+              <LinkedInIcon />
             </a>
           </div>
         </div>

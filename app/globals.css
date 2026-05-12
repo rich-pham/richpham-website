@@ -80,6 +80,26 @@ a {
   color: #F4D462;
 }
 
+.btn-blue {
+  background: #1C5BFF;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 14px 28px;
+  font-family: 'NunitoSans', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  border: none;
+  box-shadow: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1;
+}
+.btn-blue:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
 .btn-secondary {
   background: transparent;
   color: #0F2A71;

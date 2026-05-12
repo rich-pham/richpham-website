@@ -26,10 +26,10 @@ export default function Nav() {
         top: 0,
         width: '100%',
         zIndex: 100,
-        background: scrolled ? 'rgba(15, 42, 113, 0.80)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(8px)' : 'none',
-        transition: 'background 0.3s ease',
-        borderBottom: 'none',
+        background: '#ffffff',
+        borderBottom: scrolled ? '1px solid #E0E0E0' : '1px solid transparent',
+        boxShadow: scrolled ? '0 2px 12px rgba(0,0,0,0.06)' : 'none',
+        transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
       }}
     >
       <div
@@ -47,14 +47,14 @@ export default function Nav() {
             fontFamily: "'NunitoSans', sans-serif",
             fontWeight: 800,
             fontSize: '20px',
-            color: '#ffffff',
+            color: '#000000',
             textDecoration: 'none',
           }}
         >
-          Rich Pham
+          RICH PHAM
         </Link>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '32px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '36px' }}>
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -63,17 +63,17 @@ export default function Nav() {
                 fontFamily: "'NunitoSans', sans-serif",
                 fontWeight: 400,
                 fontSize: '15px',
-                color: 'rgba(255,255,255,0.75)',
+                color: '#000000',
                 textDecoration: 'none',
                 transition: 'color 0.2s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#F4D462')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.75)')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#1C5BFF')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#000000')}
             >
               {link.label}
             </Link>
           ))}
-          <Link href="/contact" className="btn-primary">
+          <Link href="/contact" className="btn-blue">
             Invite Rich to Speak
           </Link>
         </div>

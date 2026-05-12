@@ -1,35 +1,58 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function CTABanner() {
   return (
-    <section style={{ background: '#001740', padding: '96px 0' }}>
+    <section style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', minHeight: '560px' }}>
+      {/* Left — Rich's image */}
+      <div style={{ position: 'relative', minHeight: '560px', background: '#0a0a0a' }}>
+        <Image
+          src="/images/CTA.jpg"
+          alt="Rich Pham"
+          fill
+          sizes="66vw"
+          style={{ objectFit: 'cover', opacity: 0.90 }}
+          priority
+        />
+      </div>
+
+      {/* Right — text + CTA */}
       <div
-        className="section-container"
-        style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto' }}
+        style={{
+          background: '#0a0a0a',
+          padding: '64px 48px',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          borderLeft: '1px solid rgba(255,255,255,0.08)',
+        }}
       >
         <h2
           style={{
-            fontSize: '48px',
+            fontSize: '36px',
             lineHeight: 1.2,
+            fontWeight: 800,
             color: '#ffffff',
-            marginBottom: '24px',
+            marginBottom: '20px',
           }}
         >
           Let's Talk It Through
         </h2>
         <p
           style={{
-            fontSize: '18px',
-            lineHeight: 1.5,
-            color: 'rgba(255,255,255,0.80)',
-            marginBottom: '40px',
+            fontSize: '15px',
+            lineHeight: 1.7,
+            color: 'rgba(255,255,255,0.65)',
+            marginBottom: '36px',
           }}
         >
-          If you're navigating a stage where leadership decisions carry more weight than effort, a short conversation can help clarify whether the work makes sense. No pitch deck. No pressure. Just a thoughtful discussion.
+          If you're navigating a stage where leadership decisions carry more weight than effort, a short conversation can help clarify whether the work makes sense. No pitch deck. No pressure.
         </p>
-        <Link href="/contact" className="btn-primary">
-          Start the Conversation
-        </Link>
+        <div>
+          <Link href="/contact" className="btn-blue">
+            Start the Conversation →
+          </Link>
+        </div>
       </div>
     </section>
   );
