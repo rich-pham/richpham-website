@@ -2,212 +2,320 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
-const cards = [
+const tabs = [
   {
     id: 'founders',
     label: 'For Founders',
     image: '/images/founders.jpg',
     heading: 'For Founders Who Still Carry Every Critical Decision',
-    body: "Founders don't hold on because they want control — they hold on because no one has shown them a safe way to let go. I help clarify which decisions stay at the top and move the rest down with clear ownership.",
-    cta: 'Start the Conversation →',
+    intro: "I've learned that founders don't hold on because they want control; they hold on because no one has shown them a safe way to let go.",
+    sections: [
+      {
+        title: 'What I consistently see:',
+        items: [
+          'Decisions quietly accumulating at the top',
+          'Capable leaders waiting for direction instead of acting',
+          'Growth slowing because ownership was never deliberately designed',
+        ],
+      },
+      {
+        title: 'What actually changes things:',
+        items: [
+          'Clarifying which decisions must stay with the founder',
+          'Moving the rest down with clear ownership and accountability',
+          'Building leadership confidence so the business can operate without constant escalation',
+        ],
+      },
+    ],
+    when: {
+      title: 'This is usually when founders invite me in:',
+      items: [
+        'They know they need to step back',
+        "They don't want to lose control of what they built",
+      ],
+    },
   },
   {
     id: 'ceos',
     label: 'For CEOs and Boards',
     image: '/images/ceo.jpg',
-    heading: "For CEOs and Boards Leading Systems They Didn't Design",
-    body: "Authority without alignment creates silent resistance. I help align authority, responsibility, and expectations at the top — making decision ownership explicit so leaders can act with confidence.",
-    cta: 'Start the Conversation →',
+    heading: "For CEOs, Owners, and Boards Leading Systems They Didn't Design",
+    intro: "I've learned that authority without alignment creates silent resistance.",
+    sections: [
+      {
+        title: 'What typically gets in the way:',
+        items: [
+          'Inherited structures with unclear accountability',
+          'Legacy roles that no longer match the business',
+          'Decision ownership fragmented across executives, boards, or regions',
+        ],
+      },
+      {
+        title: 'What restores momentum:',
+        items: [
+          'Aligning authority, responsibility, and expectations at the top',
+          'Making decision ownership explicit so leaders can act with confidence',
+          'Reducing politics by removing ambiguity, not forcing compliance',
+        ],
+      },
+    ],
+    when: {
+      title: 'This is when professional CEOs and boards invite me in:',
+      items: ['Results are expected', 'The system is working against them'],
+    },
   },
   {
     id: 'companies',
     label: 'For Companies',
     image: '/images/company.jpg',
     heading: 'For Companies That Have Hit a Scaling Wall',
-    body: "When growth stalls, more effort is rarely the answer. I help leadership teams reset with fewer priorities clearly owned, and decision-making pushed to the right level so momentum returns.",
-    cta: 'Start the Conversation →',
+    intro: "I've learned that when growth stalls, more effort is rarely the answer.",
+    sections: [
+      {
+        title: 'What the wall usually looks like:',
+        items: [
+          'Too many priorities and no clear focus',
+          "Leadership stretched thin across decisions that shouldn't sit at the top",
+          'Execution slowing despite capable people',
+        ],
+      },
+      {
+        title: 'What actually helps:',
+        items: [
+          'Fewer priorities, clearly owned',
+          "A leadership model that matches the company's current size and complexity",
+          'Decision-making pushed to the right level so momentum returns',
+        ],
+      },
+    ],
+    when: {
+      title: 'This is when leadership teams bring me in:',
+      items: ['Not to push harder', 'But to reset how the organization leads and decides'],
+    },
   },
 ];
 
 export default function Accordion() {
+  const [active, setActive] = useState(0);
+
   return (
-    <section style={{ background: '#0a0a0a', padding: '0' }}>
-      {/* Section header */}
-      <div className="section-container" style={{ padding: '80px 32px 56px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '40px' }}>
-          <h2
-            style={{
-              fontSize: '48px',
-              lineHeight: 1.15,
-              fontWeight: 800,
-              color: '#ffffff',
-              maxWidth: '560px',
-              margin: 0,
-            }}
-          >
-            What I've Learned (and Why Leaders Invite Me In)
-          </h2>
-          <p
-            style={{
-              fontSize: '16px',
-              lineHeight: 1.6,
-              color: 'rgba(255,255,255,0.60)',
-              maxWidth: '400px',
-              margin: 0,
-              flexShrink: 0,
-            }}
-          >
-            Businesses rarely stall because of strategy or effort. They stall because the leadership system that created early success no longer fits the scale of the company.
-          </p>
-        </div>
-      </div>
+    <section style={{ background: '#0F2A71', padding: '96px 0' }}>
+      <div className="section-container">
+        <h2
+          style={{
+            fontSize: '48px',
+            lineHeight: 1.2,
+            color: '#ffffff',
+            marginBottom: '24px',
+            maxWidth: '700px',
+          }}
+        >
+          What I've Learned (and Why Leaders Invite Me In)
+        </h2>
+        <p
+          style={{
+            fontSize: '18px',
+            lineHeight: 1.5,
+            color: 'rgba(255,255,255,0.80)',
+            marginBottom: '56px',
+            maxWidth: '680px',
+          }}
+        >
+          Over the years, I've learned that businesses rarely stall because of strategy or effort. They stall because the leadership system that created early success no longer fits the scale of the company. That tension shows up differently depending on who is at the top.
+        </p>
 
-      {/* Cards row */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}>
-        {cards.map((card) => (
-          <div
-            key={card.id}
-            style={{
-              position: 'relative',
-              minHeight: '520px',
-              overflow: 'hidden',
-              borderRight: '1px solid rgba(255,255,255,0.08)',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'flex-end',
-              padding: '36px 32px',
-              background: '#111111',
-              transition: 'background 0.3s ease',
-            }}
-          >
-            {/* Background image with dark overlay */}
-            <div style={{ position: 'absolute', inset: 0 }}>
-              <Image
-                src={card.image}
-                alt={card.label}
-                fill
-                sizes="25vw"
-                style={{ objectFit: 'cover', opacity: 0.25 }}
-              />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
+          {/* Accordion list */}
+          <div>
+            {tabs.map((tab, i) => (
               <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.95) 40%, rgba(0,0,0,0.2) 100%)',
-                }}
-              />
-            </div>
+                key={tab.id}
+                style={{ borderBottom: '1px solid rgba(255,255,255,0.15)', padding: '24px 0' }}
+              >
+                <button
+                  onClick={() => setActive(i)}
+                  style={{
+                    width: '100%',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: 0,
+                    textAlign: 'left',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: '19px',
+                      fontFamily: "'NunitoSans', sans-serif",
+                      fontWeight: 800,
+                      color: active === i ? '#F4D462' : '#ffffff',
+                      transition: 'color 0.2s ease',
+                    }}
+                  >
+                    {tab.label}
+                  </span>
+                  <span
+                    style={{
+                      color: active === i ? '#F4D462' : 'rgba(255,255,255,0.50)',
+                      fontSize: '18px',
+                      transition: 'transform 0.2s ease, color 0.2s ease',
+                      transform: active === i ? 'rotate(180deg)' : 'rotate(0deg)',
+                      display: 'inline-block',
+                    }}
+                  >
+                    ↓
+                  </span>
+                </button>
 
-            {/* Content */}
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <p
-                style={{
-                  fontSize: '12px',
-                  fontWeight: 800,
-                  fontFamily: "'NunitoSans', sans-serif",
-                  color: '#1C5BFF',
-                  textTransform: 'uppercase',
-                  marginBottom: '14px',
-                }}
-              >
-                {card.label}
-              </p>
-              <h3
-                style={{
-                  fontSize: '20px',
-                  lineHeight: 1.3,
-                  fontWeight: 800,
-                  color: '#ffffff',
-                  marginBottom: '14px',
-                }}
-              >
-                {card.heading}
-              </h3>
-              <p
-                style={{
-                  fontSize: '14px',
-                  lineHeight: 1.6,
-                  color: 'rgba(255,255,255,0.65)',
-                  marginBottom: '24px',
-                }}
-              >
-                {card.body}
-              </p>
-              <Link
-                href="/contact"
-                style={{
-                  fontSize: '14px',
-                  fontWeight: 800,
-                  fontFamily: "'NunitoSans', sans-serif",
-                  color: '#ffffff',
-                  textDecoration: 'none',
-                  borderBottom: '1px solid rgba(255,255,255,0.3)',
-                  paddingBottom: '2px',
-                  transition: 'color 0.2s ease, border-color 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#1C5BFF';
-                  e.currentTarget.style.borderColor = '#1C5BFF';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '#ffffff';
-                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)';
-                }}
-              >
-                {card.cta}
-              </Link>
-            </div>
+                {active === i && (
+                  <div style={{ marginTop: '20px' }}>
+                    <h3
+                      style={{
+                        fontSize: '22px',
+                        lineHeight: 1.3,
+                        color: '#ffffff',
+                        marginBottom: '12px',
+                      }}
+                    >
+                      {tab.heading}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: '16px',
+                        lineHeight: 1.6,
+                        color: 'rgba(255,255,255,0.80)',
+                        marginBottom: '20px',
+                      }}
+                    >
+                      {tab.intro}
+                    </p>
+                    {tab.sections.map((section) => (
+                      <div key={section.title} style={{ marginBottom: '16px' }}>
+                        <p
+                          style={{
+                            fontSize: '14px',
+                            fontWeight: 800,
+                            color: '#F4D462',
+                            marginBottom: '8px',
+                            fontFamily: "'NunitoSans', sans-serif",
+                          }}
+                        >
+                          {section.title}
+                        </p>
+                        <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                          {section.items.map((item) => (
+                            <li
+                              key={item}
+                              style={{
+                                fontSize: '16px',
+                                lineHeight: 1.6,
+                                color: 'rgba(255,255,255,0.80)',
+                                marginBottom: '4px',
+                              }}
+                            >
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                    <div>
+                      <p
+                        style={{
+                          fontSize: '14px',
+                          fontWeight: 800,
+                          color: '#F4D462',
+                          marginBottom: '8px',
+                          fontFamily: "'NunitoSans', sans-serif",
+                        }}
+                      >
+                        {tab.when.title}
+                      </p>
+                      <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                        {tab.when.items.map((item) => (
+                          <li
+                            key={item}
+                            style={{
+                              fontSize: '16px',
+                              lineHeight: 1.6,
+                              color: 'rgba(255,255,255,0.80)',
+                              marginBottom: '4px',
+                            }}
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
-        ))}
 
-        {/* 4th card — closing statement */}
+          {/* Sticky image */}
+          <div
+            style={{
+              borderRadius: '6px',
+              overflow: 'hidden',
+              aspectRatio: '4/5',
+              position: 'sticky',
+              top: '100px',
+            } as React.CSSProperties}
+          >
+            <Image
+              src={tabs[active].image}
+              alt={tabs[active].label}
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ objectFit: 'cover', borderRadius: '6px' }}
+            />
+          </div>
+        </div>
+
+        {/* Closing statement */}
         <div
           style={{
-            background: '#1C5BFF',
-            minHeight: '520px',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            padding: '36px 32px',
+            marginTop: '64px',
+            padding: '40px',
+            background: 'rgba(255,255,255,0.06)',
+            borderRadius: '6px',
           }}
         >
           <p
             style={{
-              fontSize: '22px',
-              fontWeight: 800,
-              fontFamily: "'NunitoSans', sans-serif",
-              color: '#ffffff',
-              lineHeight: 1.3,
-              marginBottom: '24px',
+              fontSize: '16px',
+              lineHeight: 1.6,
+              color: 'rgba(255,255,255,0.80)',
+              marginBottom: '12px',
+            }}
+          >
+            Across all three situations, the work is the same at its core:
+          </p>
+          <ul style={{ margin: '0 0 16px', paddingLeft: '20px' }}>
+            {['Clarify decisions', 'Build leadership confidence', 'Remove the bottlenecks that limit scale'].map((item) => (
+              <li key={item} style={{ fontSize: '16px', lineHeight: 1.6, color: 'rgba(255,255,255,0.80)', marginBottom: '4px' }}>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p
+            style={{
+              fontSize: '16px',
+              lineHeight: 1.6,
+              color: 'rgba(255,255,255,0.80)',
+              marginBottom: '28px',
             }}
           >
             If you recognize your situation here, that's usually the right moment to start the conversation.
           </p>
-          <Link
-            href="/contact"
-            style={{
-              display: 'inline-block',
-              background: '#ffffff',
-              color: '#1C5BFF',
-              borderRadius: '6px',
-              padding: '14px 24px',
-              fontFamily: "'NunitoSans', sans-serif",
-              fontWeight: 800,
-              fontSize: '14px',
-              textDecoration: 'none',
-              transition: 'background 0.3s ease, color 0.3s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#000000';
-              e.currentTarget.style.color = '#ffffff';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#ffffff';
-              e.currentTarget.style.color = '#1C5BFF';
-            }}
-          >
-            Get Started →
+          <Link href="/contact" className="btn-blue">
+            Start the Conversation
           </Link>
         </div>
       </div>

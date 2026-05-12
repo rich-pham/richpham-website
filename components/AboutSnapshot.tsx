@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 
 const stats = [
   { numeral: '30+', label: 'Years of operating experience' },
@@ -22,29 +21,16 @@ export default function AboutSnapshot() {
         />
       </div>
 
-      {/* Right — blue */}
+      {/* Right — navy */}
       <div
         style={{
-          background: '#1C5BFF',
+          background: '#0F2A71',
           padding: '80px 72px',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
         }}
       >
-        <p
-          style={{
-            fontSize: '13px',
-            fontWeight: 800,
-            fontFamily: "'NunitoSans', sans-serif",
-            color: 'rgba(255,255,255,0.70)',
-            textTransform: 'uppercase',
-            marginBottom: '20px',
-          }}
-        >
-          About Us
-        </p>
-
         <h2
           style={{
             fontSize: '42px',
@@ -68,14 +54,14 @@ export default function AboutSnapshot() {
           I am a business leader and advisor having served as CEO, COO, Chairman, Chief of Staff, and Board-level leader across Asia, Europe, and the Middle East. Today I work with founders and CEOs to remove leadership bottlenecks and scale with confidence.
         </p>
 
-        <div style={{ display: 'flex', gap: '48px', marginBottom: '48px' }}>
+        <div style={{ display: 'flex', gap: '48px' }}>
           {stats.map((s) => (
             <div key={s.numeral}>
               <div
                 style={{
                   fontSize: '48px',
                   fontWeight: 800,
-                  color: '#ffffff',
+                  color: '#F4D462',
                   fontFamily: "'NunitoSans', sans-serif",
                   lineHeight: 1,
                 }}
@@ -87,34 +73,6 @@ export default function AboutSnapshot() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div>
-          <Link
-            href="/about"
-            style={{
-              display: 'inline-block',
-              background: '#ffffff',
-              color: '#1C5BFF',
-              borderRadius: '6px',
-              padding: '14px 28px',
-              fontFamily: "'NunitoSans', sans-serif",
-              fontWeight: 800,
-              fontSize: '15px',
-              textDecoration: 'none',
-              transition: 'background 0.3s ease, color 0.3s ease',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#000000';
-              e.currentTarget.style.color = '#ffffff';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#ffffff';
-              e.currentTarget.style.color = '#1C5BFF';
-            }}
-          >
-            Learn More
-          </Link>
         </div>
       </div>
     </section>

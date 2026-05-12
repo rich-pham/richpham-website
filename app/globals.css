@@ -81,8 +81,8 @@ a {
 }
 
 .btn-blue {
-  background: #1C5BFF;
-  color: #ffffff;
+  background: #F4D462;
+  color: #001740;
   border-radius: 6px;
   padding: 14px 28px;
   font-family: 'NunitoSans', sans-serif;
@@ -97,7 +97,7 @@ a {
 }
 .btn-blue:hover {
   background: #000000;
-  color: #ffffff;
+  color: #F4D462;
 }
 
 .btn-secondary {

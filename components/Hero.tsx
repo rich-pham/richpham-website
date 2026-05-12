@@ -6,13 +6,13 @@ export default function Hero() {
       style={{
         background: '#ffffff',
         paddingTop: '72px',
-        minHeight: '88vh',
+        minHeight: '60vh',
         display: 'flex',
         alignItems: 'center',
         borderBottom: '1px solid #E0E0E0',
       }}
     >
-      <div className="section-container" style={{ width: '100%', padding: '96px 32px' }}>
+      <div className="section-container" style={{ width: '100%', padding: '72px 32px' }}>
         <div style={{ maxWidth: '900px' }}>
           <h1
             className="fade-in-up"
@@ -25,7 +25,7 @@ export default function Hero() {
             }}
           >
             Unlock the{' '}
-            <span style={{ color: '#1C5BFF' }}>Bottlenecks</span>
+            <span style={{ color: '#0F2A71' }}>Bottlenecks</span>
             {' '}of Your Business
           </h1>
 
@@ -35,7 +35,6 @@ export default function Hero() {
               alignItems: 'flex-end',
               justifyContent: 'space-between',
               gap: '64px',
-              marginTop: '8px',
             }}
           >
             <p
@@ -54,25 +53,6 @@ export default function Hero() {
               <Link href="/contact" className="btn-blue" style={{ whiteSpace: 'nowrap' }}>
                 Start the Conversation →
               </Link>
-            </div>
-          </div>
-
-          <div
-            style={{
-              borderTop: '1px solid #E0E0E0',
-              marginTop: '64px',
-              paddingTop: '40px',
-              display: 'flex',
-              gap: '64px',
-            }}
-          >
-            <div>
-              <div style={{ fontSize: '40px', fontWeight: 800, color: '#000000', fontFamily: "'NunitoSans', sans-serif" }}>30+</div>
-              <div style={{ fontSize: '14px', color: '#666666', marginTop: '4px' }}>Years of operating experience</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '40px', fontWeight: 800, color: '#000000', fontFamily: "'NunitoSans', sans-serif" }}>16+</div>
-              <div style={{ fontSize: '14px', color: '#666666', marginTop: '4px' }}>Countries served as C-level leaders</div>
             </div>
           </div>
         </div>

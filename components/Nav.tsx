@@ -67,7 +67,7 @@ export default function Nav() {
                 textDecoration: 'none',
                 transition: 'color 0.2s ease',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = '#1C5BFF')}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#0F2A71')}
               onMouseLeave={(e) => (e.currentTarget.style.color = '#000000')}
             >
               {link.label}
