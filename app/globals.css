@@ -204,4 +204,22 @@ a { text-decoration: none; }
   /* Footer */
   .footer-grid   { grid-template-columns: 1fr !important; gap: 32px !important; }
   .footer-bottom { flex-direction: column !important; gap: 16px !important; align-items: flex-start !important; }
+
+  /* About page */
+  .about-hero-grid   { grid-template-columns: 1fr !important; }
+  .about-hero-h1     { font-size: 44px !important; }
+  .about-hero-sub    { font-size: 18px !important; }
+  .about-hero-img    { min-height: 300px !important; aspect-ratio: 3/4; }
+  .bio-grid          { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .approach-h2       { font-size: 32px !important; }
+  .pocari-grid       { grid-template-columns: 1fr !important; }
+  .pocari-h2         { font-size: 28px !important; }
+  .eo-grid           { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .eo-h3             { font-size: 28px !important; }
+  .global-h3         { font-size: 32px !important; }
+  .global-stats-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+  .racing-grid       { grid-template-columns: 1fr !important; }
+  .racing-h3         { font-size: 28px !important; }
+  .blog-h2           { font-size: 32px !important; }
+  .blog-grid         { grid-template-columns: 1fr !important; }
 }
