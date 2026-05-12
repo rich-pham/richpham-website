@@ -101,14 +101,15 @@ export default function Accordion() {
   const [active, setActive] = useState(0);
 
   return (
-    <section style={{ background: '#0F2A71', padding: '96px 0' }}>
+    <section style={{ background: '#ffffff', padding: '96px 0' }}>
       <div className="section-container">
+        {/* Section header */}
         <h2
           style={{
             fontSize: '48px',
             lineHeight: 1.2,
-            color: '#ffffff',
-            marginBottom: '24px',
+            color: '#0F2A71',
+            marginBottom: '16px',
             maxWidth: '700px',
           }}
         >
@@ -118,7 +119,7 @@ export default function Accordion() {
           style={{
             fontSize: '18px',
             lineHeight: 1.5,
-            color: 'rgba(255,255,255,0.80)',
+            color: '#000000',
             marginBottom: '56px',
             maxWidth: '680px',
           }}
@@ -126,34 +127,46 @@ export default function Accordion() {
           Over the years, I've learned that businesses rarely stall because of strategy or effort. They stall because the leadership system that created early success no longer fits the scale of the company. That tension shows up differently depending on who is at the top.
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
-          {/* Accordion list */}
-          <div>
+        {/* 3-column 2:1:1 */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '2fr 1fr 1fr',
+            gap: '0',
+            minHeight: '520px',
+            border: '1px solid #E0E0E0',
+            borderRadius: '6px',
+            overflow: 'hidden',
+          }}
+        >
+          {/* Col 1 — Accordion (2fr) */}
+          <div style={{ borderRight: '1px solid #E0E0E0', padding: '0' }}>
             {tabs.map((tab, i) => (
               <div
                 key={tab.id}
-                style={{ borderBottom: '1px solid rgba(255,255,255,0.15)', padding: '24px 0' }}
+                style={{ borderBottom: i < tabs.length - 1 ? '1px solid #E0E0E0' : 'none' }}
               >
                 <button
                   onClick={() => setActive(i)}
                   style={{
                     width: '100%',
-                    background: 'none',
+                    background: active === i ? '#F4F4F4' : '#ffffff',
                     border: 'none',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    padding: 0,
+                    padding: '24px 32px',
                     textAlign: 'left',
+                    transition: 'background 0.2s ease',
                   }}
                 >
                   <span
                     style={{
-                      fontSize: '19px',
+                      fontSize: '18px',
                       fontFamily: "'NunitoSans', sans-serif",
                       fontWeight: 800,
-                      color: active === i ? '#F4D462' : '#ffffff',
+                      color: active === i ? '#0F2A71' : '#000000',
                       transition: 'color 0.2s ease',
                     }}
                   >
@@ -161,11 +174,12 @@ export default function Accordion() {
                   </span>
                   <span
                     style={{
-                      color: active === i ? '#F4D462' : 'rgba(255,255,255,0.50)',
-                      fontSize: '18px',
+                      color: active === i ? '#0F2A71' : '#A8B2BD',
+                      fontSize: '16px',
                       transition: 'transform 0.2s ease, color 0.2s ease',
                       transform: active === i ? 'rotate(180deg)' : 'rotate(0deg)',
                       display: 'inline-block',
+                      flexShrink: 0,
                     }}
                   >
                     ↓
@@ -173,49 +187,50 @@ export default function Accordion() {
                 </button>
 
                 {active === i && (
-                  <div style={{ marginTop: '20px' }}>
+                  <div style={{ padding: '0 32px 28px', background: '#F4F4F4' }}>
                     <h3
                       style={{
-                        fontSize: '22px',
+                        fontSize: '20px',
                         lineHeight: 1.3,
-                        color: '#ffffff',
+                        color: '#0F2A71',
                         marginBottom: '12px',
+                        fontWeight: 800,
                       }}
                     >
                       {tab.heading}
                     </h3>
                     <p
                       style={{
-                        fontSize: '16px',
+                        fontSize: '15px',
                         lineHeight: 1.6,
-                        color: 'rgba(255,255,255,0.80)',
+                        color: '#000000',
                         marginBottom: '20px',
                       }}
                     >
                       {tab.intro}
                     </p>
                     {tab.sections.map((section) => (
-                      <div key={section.title} style={{ marginBottom: '16px' }}>
+                      <div key={section.title} style={{ marginBottom: '14px' }}>
                         <p
                           style={{
-                            fontSize: '14px',
+                            fontSize: '13px',
                             fontWeight: 800,
-                            color: '#F4D462',
-                            marginBottom: '8px',
+                            color: '#0F2A71',
+                            marginBottom: '6px',
                             fontFamily: "'NunitoSans', sans-serif",
                           }}
                         >
                           {section.title}
                         </p>
-                        <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                        <ul style={{ margin: 0, paddingLeft: '18px' }}>
                           {section.items.map((item) => (
                             <li
                               key={item}
                               style={{
-                                fontSize: '16px',
+                                fontSize: '14px',
                                 lineHeight: 1.6,
-                                color: 'rgba(255,255,255,0.80)',
-                                marginBottom: '4px',
+                                color: '#000000',
+                                marginBottom: '3px',
                               }}
                             >
                               {item}
@@ -227,24 +242,24 @@ export default function Accordion() {
                     <div>
                       <p
                         style={{
-                          fontSize: '14px',
+                          fontSize: '13px',
                           fontWeight: 800,
-                          color: '#F4D462',
-                          marginBottom: '8px',
+                          color: '#0F2A71',
+                          marginBottom: '6px',
                           fontFamily: "'NunitoSans', sans-serif",
                         }}
                       >
                         {tab.when.title}
                       </p>
-                      <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                      <ul style={{ margin: 0, paddingLeft: '18px' }}>
                         {tab.when.items.map((item) => (
                           <li
                             key={item}
                             style={{
-                              fontSize: '16px',
+                              fontSize: '14px',
                               lineHeight: 1.6,
-                              color: 'rgba(255,255,255,0.80)',
-                              marginBottom: '4px',
+                              color: '#000000',
+                              marginBottom: '3px',
                             }}
                           >
                             {item}
@@ -258,65 +273,68 @@ export default function Accordion() {
             ))}
           </div>
 
-          {/* Sticky image */}
-          <div
-            style={{
-              borderRadius: '6px',
-              overflow: 'hidden',
-              aspectRatio: '4/5',
-              position: 'sticky',
-              top: '100px',
-            } as React.CSSProperties}
-          >
+          {/* Col 2 — Image (1fr) */}
+          <div style={{ position: 'relative', borderRight: '1px solid #E0E0E0' }}>
             <Image
               src={tabs[active].image}
               alt={tabs[active].label}
               fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              style={{ objectFit: 'cover', borderRadius: '6px' }}
+              sizes="25vw"
+              style={{ objectFit: 'cover', transition: 'opacity 0.3s ease' }}
             />
           </div>
-        </div>
 
-        {/* Closing statement */}
-        <div
-          style={{
-            marginTop: '64px',
-            padding: '40px',
-            background: 'rgba(255,255,255,0.06)',
-            borderRadius: '6px',
-          }}
-        >
-          <p
+          {/* Col 3 — Static closing panel (1fr) */}
+          <div
             style={{
-              fontSize: '16px',
-              lineHeight: 1.6,
-              color: 'rgba(255,255,255,0.80)',
-              marginBottom: '12px',
+              background: '#0F2A71',
+              padding: '40px 32px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
             }}
           >
-            Across all three situations, the work is the same at its core:
-          </p>
-          <ul style={{ margin: '0 0 16px', paddingLeft: '20px' }}>
-            {['Clarify decisions', 'Build leadership confidence', 'Remove the bottlenecks that limit scale'].map((item) => (
-              <li key={item} style={{ fontSize: '16px', lineHeight: 1.6, color: 'rgba(255,255,255,0.80)', marginBottom: '4px' }}>
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p
-            style={{
-              fontSize: '16px',
-              lineHeight: 1.6,
-              color: 'rgba(255,255,255,0.80)',
-              marginBottom: '28px',
-            }}
-          >
-            If you recognize your situation here, that's usually the right moment to start the conversation.
-          </p>
-          <Link href="/contact" className="btn-blue">
-            Start the Conversation
-          </Link>
+            <div>
+              <p
+                style={{
+                  fontSize: '15px',
+                  lineHeight: 1.7,
+                  color: 'rgba(255,255,255,0.85)',
+                  marginBottom: '20px',
+                }}
+              >
+                Across all three situations, the work is the same at its core:
+              </p>
+              <ul style={{ margin: '0 0 20px', paddingLeft: '18px' }}>
+                {['Clarify decisions', 'Build leadership confidence', 'Remove the bottlenecks that limit scale'].map((item) => (
+                  <li
+                    key={item}
+                    style={{
+                      fontSize: '14px',
+                      lineHeight: 1.7,
+                      color: 'rgba(255,255,255,0.85)',
+                      marginBottom: '4px',
+                    }}
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p
+                style={{
+                  fontSize: '15px',
+                  lineHeight: 1.7,
+                  color: 'rgba(255,255,255,0.85)',
+                  marginBottom: '32px',
+                }}
+              >
+                If you recognize your situation here, that's usually the right moment to start the conversation.
+              </p>
+            </div>
+            <Link href="/contact" className="btn-blue">
+              Start the Conversation
+            </Link>
+          </div>
         </div>
       </div>
     </section>
