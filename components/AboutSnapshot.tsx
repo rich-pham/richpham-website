@@ -6,7 +6,7 @@ export default function AboutSnapshot() {
   return (
     <section className="about-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 3fr' }}>
       {/* Left — dark with photo */}
-      <div className="about-img" style={{ background: '#0a0a0a', position: 'relative', minHeight: '600px' }}>
+      <div className="about-img" style={{ background: '#0a0a0a', position: 'relative', aspectRatio: '3/4' }}>
         <Image
           src="/images/rich.jpg"
           alt="Rich Pham"

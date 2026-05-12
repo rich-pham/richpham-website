@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const footerLinks = [
-  { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
@@ -27,9 +26,12 @@ export default function Footer() {
         <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '48px', marginBottom: '48px' }}>
           {/* Brand */}
           <div>
-            <div style={{ fontFamily: "'NunitoSans', sans-serif", fontWeight: 800, fontSize: '20px', color: '#ffffff', marginBottom: '16px' }}>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              style={{ fontFamily: "'NunitoSans', sans-serif", fontWeight: 800, fontSize: '20px', color: '#ffffff', marginBottom: '16px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
+            >
               RICH PHAM
-            </div>
+            </button>
           </div>
 
           {/* Links */}
