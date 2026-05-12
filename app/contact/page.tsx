@@ -80,13 +80,13 @@ export default function ContactPage() {
           </div>
 
           {/* Right: full-bleed image, 3:4 */}
-          <div style={{ position: 'relative', aspectRatio: '3/4' }} className="about-hero-img contact-hero-img">
+          <div style={{ position: 'relative', aspectRatio: '4/3' }} className="about-hero-img contact-hero-img">
             <Image
-              src="/images/about/rich.jpg"
+              src="/images/contact.jpg"
               alt="Rich Pham"
               fill
               sizes="50vw"
-              style={{ objectFit: 'cover', objectPosition: 'top' }}
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
               priority
             />
           </div>
