@@ -163,7 +163,7 @@ export default function BlogContent() {
                   marginBottom: '-1px',
                 }}
               >
-                {cat.toUpperCase()}
+                {cat}
               </button>
             ))}
           </div>
@@ -174,7 +174,7 @@ export default function BlogContent() {
       <section style={{ background: '#F4F4F4', padding: '80px 0' }}>
         <div className="section-container">
           <div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px', alignItems: 'stretch' }}
             className="blog-grid"
           >
             {visible.map((post) => (
@@ -184,9 +184,10 @@ export default function BlogContent() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="blog-card"
+                style={{ display: 'flex', flexDirection: 'column' }}
               >
                 {/* Image */}
-                <div style={{ position: 'relative', aspectRatio: '16/9', overflow: 'hidden' }}>
+                <div style={{ position: 'relative', aspectRatio: '16/9', overflow: 'hidden', flexShrink: 0 }}>
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -196,40 +197,37 @@ export default function BlogContent() {
                   />
                 </div>
 
-                <div style={{ padding: '20px 24px 24px', background: '#ffffff' }}>
+                <div style={{ padding: '20px 24px 24px', background: '#ffffff', flex: 1, display: 'flex', flexDirection: 'column' }}>
                   {/* Category tag — only on All */}
                   {active === 'All' && (
                     <p style={{
                       display: 'inline-block',
+                      alignSelf: 'flex-start',
                       fontSize: '10px',
                       fontWeight: 800,
                       fontFamily: "'NunitoSans', sans-serif",
                       textTransform: 'uppercase',
                       color: '#0F2A71',
-                      background: '#F4D462',
+                      background: '#F4F4F4',
+                      border: '1px solid #0F2A71',
                       padding: '3px 8px',
                       borderRadius: '3px',
-                      marginBottom: '12px',
+                      marginBottom: '8px',
                     }}>
                       {post.category}
                     </p>
                   )}
 
-                  {/* Title */}
-                  <p className="blog-card-title" style={{ fontSize: '16px', fontWeight: 800, lineHeight: 1.4, fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>
-                    {post.title}
-                  </p>
-
                   {/* Date */}
                   {(post.date || post.readTime) && (
-                    <p style={{ fontSize: '12px', color: '#999999', fontFamily: "'NunitoSans', sans-serif", marginBottom: '12px' }}>
+                    <p style={{ fontSize: '12px', color: '#999999', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>
                       {[post.date, post.readTime].filter(Boolean).join(' · ')}
                     </p>
                   )}
 
-                  {/* CTA */}
-                  <p className="blog-card-link" style={{ fontSize: '13px', fontWeight: 800, fontFamily: "'NunitoSans', sans-serif" }}>
-                    Read more →
+                  {/* Title */}
+                  <p className="blog-card-title" style={{ fontSize: '16px', fontWeight: 800, lineHeight: 1.4, fontFamily: "'NunitoSans', sans-serif" }}>
+                    {post.title}
                   </p>
                 </div>
               </Link>
