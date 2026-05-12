@@ -92,8 +92,8 @@ a { text-decoration: none; }
 
 .btn-secondary {
   background: transparent;
-  color: #0F2A71;
-  border: 1px solid #0F2A71;
+  color: #ff0000;
+  border: 1px solid #ff0000;
   border-radius: 6px;
   padding: 14px 28px;
   font-family: 'NunitoSans', sans-serif;
@@ -105,7 +105,10 @@ a { text-decoration: none; }
   display: inline-block;
   line-height: 1;
 }
-.btn-secondary:hover { background: #0F2A71; color: #F4D462; }
+.btn-secondary:hover {
+  background: #ff0000;
+  color: #F4D462;
+}
 
 /* ── Animations ── */
 @keyframes fadeInUp {

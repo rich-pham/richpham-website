@@ -130,7 +130,7 @@ function AccordionItem({
             fontSize: '18px',
             fontFamily: "'NunitoSans', sans-serif",
             fontWeight: 800,
-            color: isActive ? '#0F2A71' : '#000000',
+            color: isActive ? '#ff0000' : '#000000',
             transition: 'color 0.25s ease',
           }}
         >
@@ -138,7 +138,7 @@ function AccordionItem({
         </span>
         <span
           style={{
-            color: isActive ? '#0F2A71' : '#A8B2BD',
+            color: isActive ? '#ff0000' : '#A8B2BD',
             fontSize: '16px',
             transition: 'transform 0.3s ease, color 0.25s ease',
             transform: isActive ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -165,7 +165,7 @@ function AccordionItem({
             style={{
               fontSize: '19px',
               lineHeight: 1.3,
-              color: '#0F2A71',
+              color: '#ff0000',
               marginBottom: '10px',
               fontWeight: 800,
             }}
@@ -182,7 +182,7 @@ function AccordionItem({
                 style={{
                   fontSize: '13px',
                   fontWeight: 800,
-                  color: '#0F2A71',
+                  color: '#ff0000',
                   marginBottom: '6px',
                   fontFamily: "'NunitoSans', sans-serif",
                 }}
@@ -203,7 +203,7 @@ function AccordionItem({
                       gap: '8px',
                     }}
                   >
-                    <span style={{ color: '#0F2A71', fontWeight: 800, flexShrink: 0, marginTop: '1px' }}>•</span>
+                    <span style={{ color: '#ff0000', fontWeight: 800, flexShrink: 0, marginTop: '1px' }}>•</span>
                     {item}
                   </li>
                 ))}
@@ -216,7 +216,7 @@ function AccordionItem({
               style={{
                 fontSize: '13px',
                 fontWeight: 800,
-                color: '#0F2A71',
+                color: '#ff0000',
                 marginBottom: '6px',
                 fontFamily: "'NunitoSans', sans-serif",
               }}
@@ -237,7 +237,7 @@ function AccordionItem({
                     gap: '8px',
                   }}
                 >
-                  <span style={{ color: '#0F2A71', fontWeight: 800, flexShrink: 0, marginTop: '1px' }}>•</span>
+                  <span style={{ color: '#ff0000', fontWeight: 800, flexShrink: 0, marginTop: '1px' }}>•</span>
                   {item}
                 </li>
               ))}
@@ -260,7 +260,7 @@ export default function Accordion() {
           style={{
             fontSize: '48px',
             lineHeight: 1.2,
-            color: '#0F2A71',
+            color: '#ff0000',
             marginBottom: '16px',
             maxWidth: '700px',
           }}
@@ -320,7 +320,7 @@ export default function Accordion() {
             {/* Row 2: CTA panel */}
             <div
               style={{
-                background: '#0F2A71',
+                background: '#ff0000',
                 padding: '36px 36px',
                 borderTop: '1px solid rgba(255,255,255,0.10)',
                 display: 'flex',

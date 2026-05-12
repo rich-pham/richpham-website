@@ -19,7 +19,7 @@ export default function CTABanner() {
       {/* Right — text + CTA */}
       <div
         style={{
-          background: '#0F2A71',
+          background: '#ff0000',
           padding: '64px 48px',
           display: 'flex',
           flexDirection: 'column',
