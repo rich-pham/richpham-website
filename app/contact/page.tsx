@@ -79,8 +79,8 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right: full-bleed image, 3:4 ratio */}
-          <div style={{ position: 'relative', aspectRatio: '3/4' }} className="about-hero-img">
+          {/* Right: full-bleed image */}
+          <div style={{ position: 'relative', overflow: 'hidden', minHeight: '480px' }} className="about-hero-img">
             <Image
               src="/images/about/rich.jpg"
               alt="Rich Pham"
