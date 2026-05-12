@@ -13,7 +13,7 @@ export default function Hero() {
       }}
     >
       <div className="section-container" style={{ width: '100%', padding: '72px 32px' }}>
-        <div style={{ maxWidth: '900px' }}>
+        <div>
           <h1
             className="fade-in-up hero-h1"
             style={{

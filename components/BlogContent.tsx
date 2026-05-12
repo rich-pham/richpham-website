@@ -64,7 +64,7 @@ export default function BlogContent() {
             </h1>
           </div>
         </div>
-        <div style={{ position: 'relative', aspectRatio: '4/3' }} className="about-hero-img">
+        <div style={{ position: 'relative', aspectRatio: '16/9' }} className="about-hero-img">
           <Image
             src="/images/blog.jpg"
             alt="Rich Pham Blog"
