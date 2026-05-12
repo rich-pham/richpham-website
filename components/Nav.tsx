@@ -108,21 +108,22 @@ export default function Nav() {
         </button>
       </div>
 
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="nav-mobile-menu">
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} onClick={closeMenu}>
-              {link.label}
-            </Link>
-          ))}
-          <div className="nav-mobile-cta">
-            <Link href="/contact" className="btn-blue" onClick={closeMenu}>
-              Invite Rich to Speak
-            </Link>
-          </div>
+      {/* Mobile menu — always rendered, animated via maxHeight */}
+      <div
+        className="nav-mobile-menu"
+        style={{ maxHeight: menuOpen ? '400px' : '0' }}
+      >
+        {navLinks.map((link) => (
+          <Link key={link.href} href={link.href} onClick={closeMenu}>
+            {link.label}
+          </Link>
+        ))}
+        <div className="nav-mobile-cta">
+          <Link href="/contact" className="btn-blue" onClick={closeMenu}>
+            Invite Rich to Speak
+          </Link>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

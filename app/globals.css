@@ -132,7 +132,13 @@ a { text-decoration: none; }
 /* ── Nav mobile ── */
 .nav-links        { display: flex; align-items: center; gap: 36px; }
 .nav-hamburger    { display: none; background: none; border: none; cursor: pointer; padding: 4px; flex-direction: column; gap: 5px; }
-.nav-mobile-menu  { display: none; }
+.nav-mobile-menu  {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s ease;
+  background: #ffffff;
+  border-top: 1px solid transparent;
+}
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
@@ -140,22 +146,14 @@ a { text-decoration: none; }
   .section-container { padding: 0 20px; }
 
   /* Nav */
-  .nav-links       { display: none; }
-  .nav-hamburger   { display: flex; }
+  .nav-links     { display: none; }
+  .nav-hamburger { display: flex; }
   .nav-mobile-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    background: #ffffff;
-    border-top: 1px solid #E0E0E0;
-    padding: 8px 0 16px;
-    position: absolute;
-    top: 72px;
-    left: 0;
-    width: 100%;
+    border-top-color: #E0E0E0;
     box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    padding: 8px 0 20px;
   }
-  .nav-mobile-menu a, .nav-mobile-menu button {
+  .nav-mobile-menu a:not(.btn-blue) {
     display: block;
     padding: 14px 24px;
     font-size: 16px;
@@ -163,14 +161,14 @@ a { text-decoration: none; }
     text-decoration: none;
     font-family: 'NunitoSans', sans-serif;
     font-weight: 400;
-    border: none;
-    background: none;
-    text-align: left;
-    width: 100%;
-    cursor: pointer;
   }
   .nav-mobile-cta {
     margin: 12px 24px 0;
+  }
+  .nav-mobile-menu .btn-blue {
+    background: #F4D462 !important;
+    color: #001740 !important;
+    display: inline-block;
   }
 
   /* Hero */
@@ -183,7 +181,7 @@ a { text-decoration: none; }
 
   /* About */
   .about-grid      { grid-template-columns: 1fr !important; }
-  .about-img       { min-height: 280px !important; }
+  .about-img       { min-height: unset !important; aspect-ratio: 3/4; width: 100%; }
   .about-content   { padding: 48px 28px !important; }
 
   /* Accordion section */
