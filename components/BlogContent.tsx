@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { posts } from '@/lib/posts';
 
 const PAGE_SIZE = 9;
 
@@ -13,73 +14,6 @@ const categories = [
   'People Power',
   'Lessons from the Real World',
   'Curiosity-Driven Leadership',
-];
-
-const posts = [
-  {
-    title: "How to Find Your Competitive Edge On and Off The Race Track",
-    href: "https://www.richpham.com/post/how-to-find-your-competitive-edge-on-and-off-the-race-track",
-    image: "/images/about/world-class-racing-driver.jpg",
-    category: "Racing Through Life",
-    date: "Jan 21, 2025",
-    readTime: "",
-  },
-  {
-    title: "From Zero to Factory: How I Brought Pocari Sweat to Vietnam's Fast Lane",
-    href: "https://www.richpham.com/post/from-zero-to-factory-how-i-brought-pocari-sweat-to-vietnam-s-fast-lane",
-    image: "/images/about/blog-pocari.png",
-    category: "Racing Through Life",
-    date: "Apr 17, 2025",
-    readTime: "3 min read",
-  },
-  {
-    title: "Building a Competitive Edge Is Easier Than You Think",
-    href: "https://www.richpham.com/post/building-a-competitive-edge-is-easier-than-you-think",
-    image: "/images/blog.jpg",
-    category: "Racing Through Life",
-    date: "Jan 23, 2025",
-    readTime: "3 min read",
-  },
-  {
-    title: "Racing and Business: How Can Racing Benefit A Leadership Coach?",
-    href: "https://www.richpham.com/post/racing-and-business-how-can-racing-benefit-a-leadership-coach",
-    image: "/images/blog.jpg",
-    category: "Racing Through Life",
-    date: "Jan 22, 2025",
-    readTime: "3 min read",
-  },
-  {
-    title: "Why Every Leader Should Learn from Mistakes for Growth and Innovation",
-    href: "https://www.richpham.com/post/why-every-leader-should-learn-from-mistakes-for-growth-and-innovation",
-    image: "/images/blog.jpg",
-    category: "Reinvent to Succeed",
-    date: "Jan 23, 2025",
-    readTime: "",
-  },
-  {
-    title: "The Role of a Leadership Coach in Turning Failure Into a Comeback Story",
-    href: "https://www.richpham.com/post/the-role-of-a-leadership-coach-in-turning-failure-into-a-comeback-story",
-    image: "/images/about/rich.jpg",
-    category: "Reinvent to Succeed",
-    date: "Jan 23, 2025",
-    readTime: "3 min read",
-  },
-  {
-    title: "How a Leadership Coach Can Help You Spot Untapped Opportunities",
-    href: "https://www.richpham.com/post/how-a-leadership-coach-can-help-you-spot-untapped-opportunities",
-    image: "/images/about/blog-leadership-coach.jpg",
-    category: "Reinvent to Succeed",
-    date: "Jan 24, 2025",
-    readTime: "",
-  },
-  {
-    title: "How Perseverance Builds Resilient Businesses",
-    href: "https://www.richpham.com/post/how-perseverance-builds-resilient-businesses",
-    image: "/images/about/blog-perseverance.jpg",
-    category: "Reinvent to Succeed",
-    date: "Jan 24, 2025",
-    readTime: "",
-  },
 ];
 
 export default function BlogContent() {
@@ -179,10 +113,8 @@ export default function BlogContent() {
           >
             {visible.map((post) => (
               <Link
-                key={post.href}
-                href={post.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                key={post.slug}
+                href={`/blog/${post.slug}`}
                 className="blog-card"
                 style={{ display: 'flex', flexDirection: 'column' }}
               >
