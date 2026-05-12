@@ -35,7 +35,7 @@ const racingAchievements = [
 
 const blogPosts = [
   {
-    title: 'From Zero to Factory: How I Brought Pocari Sweat to Vietnam's Fast Lane',
+    title: "From Zero to Factory: How I Brought Pocari Sweat to Vietnam's Fast Lane",
     href: '/post/from-zero-to-factory-how-i-brought-pocari-sweat-to-vietnam-s-fast-lane',
     image: '/images/about/pocari-sweat.jpg',
   },
@@ -411,9 +411,7 @@ export default function AboutPage() {
                 <Link
                   key={post.href}
                   href={post.href}
-                  style={{ textDecoration: 'none', display: 'block', borderRadius: '6px', overflow: 'hidden', border: '1px solid #E0E0E0', transition: 'box-shadow 0.2s ease' }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 4px 20px rgba(15,42,113,0.10)'; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}
+                  style={{ textDecoration: 'none', display: 'block', borderRadius: '6px', overflow: 'hidden', border: '1px solid #E0E0E0' }}
                 >
                   <div style={{ position: 'relative', aspectRatio: '16/9' }}>
                     <Image

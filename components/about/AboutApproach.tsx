@@ -9,7 +9,7 @@ const pillars = [
   },
   {
     label: 'Industry Versatility',
-    body: 'From FMCG giants like Coca-Cola and Danone to high-growth tech organizations, I've led across industries and adapted strategy to fit radically different market conditions and cultures.',
+    body: "From FMCG giants like Coca-Cola and Danone to high-growth tech organizations, I've led across industries and adapted strategy to fit radically different market conditions and cultures.",
   },
   {
     label: 'Proven Results',
