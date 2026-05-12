@@ -47,7 +47,7 @@ export default function AboutApproach() {
     <section style={{ background: '#ffffff', padding: '80px 0' }}>
       <div className="section-container">
         <div
-          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}
+          style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'start' }}
           className="approach-grid"
         >
           {/* Left: heading */}

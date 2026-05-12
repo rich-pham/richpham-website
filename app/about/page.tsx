@@ -226,7 +226,7 @@ export default function AboutPage() {
                     gap: '20px',
                   }}
                 >
-                  <span style={{ fontSize: '15px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif" }}>
+                  <span style={{ fontSize: '15px', fontWeight: 800, color: '#ffffff', fontFamily: "'NunitoSans', sans-serif" }}>
                     {m.milestone}
                   </span>
                   <span style={{ fontSize: '15px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6 }}>
@@ -301,43 +301,46 @@ export default function AboutPage() {
         {/* ── Global Experience ── */}
         <section style={{ background: '#ffffff', padding: '96px 0' }}>
           <div className="section-container">
-            {/* Heading */}
+            {/* Row 1: centered heading */}
             <h3
-              style={{ fontSize: '40px', lineHeight: 1.2, fontWeight: 800, color: '#0F2A71', marginBottom: '48px' }}
+              style={{ fontSize: '40px', lineHeight: 1.2, fontWeight: 800, color: '#0F2A71', marginBottom: '48px', textAlign: 'center' }}
               className="global-h3"
             >
               Extensive Global Experience
             </h3>
-            {/* Map — full width, no crop */}
-            <div style={{ width: '100%', marginBottom: '56px' }}>
-              <Image
-                src="/images/about/map.png"
-                alt="Global experience map"
-                width={1136}
-                height={600}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
-              />
-            </div>
-            {/* 4-col stats — no icons */}
+            {/* Row 2: 3:1 — map left, stats right */}
             <div
-              style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px' }}
+              style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: '48px', alignItems: 'start' }}
               className="global-stats-grid"
             >
+              {/* Map */}
               <div>
-                <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>11+ Countries</p>
-                <p style={{ fontSize: '14px', color: '#666666', lineHeight: 1.6 }}>Hands-on global experience, leading and adapting across diverse markets.</p>
+                <Image
+                  src="/images/about/map.png"
+                  alt="Global experience map"
+                  width={1136}
+                  height={600}
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
               </div>
-              <div>
-                <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>4 of Top 10</p>
-                <p style={{ fontSize: '14px', color: '#666666', lineHeight: 1.6 }}>Senior leadership in Fortune 500 companies — Coca-Cola, J&amp;J, P&amp;G, and Danone.</p>
-              </div>
-              <div>
-                <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>Cultural Adaptability</p>
-                <p style={{ fontSize: '14px', color: '#666666', lineHeight: 1.6 }}>Leveraged diverse cultural insights to drive global strategies.</p>
-              </div>
-              <div>
-                <p style={{ fontSize: '20px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>Operational Excellence</p>
-                <p style={{ fontSize: '14px', color: '#666666', lineHeight: 1.6 }}>Enhanced performance through effective management practices.</p>
+              {/* 4 stats stacked vertically */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+                <div>
+                  <p style={{ fontSize: '18px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '6px' }}>11+ Countries</p>
+                  <p style={{ fontSize: '13px', color: '#666666', lineHeight: 1.6 }}>Hands-on global experience across diverse markets.</p>
+                </div>
+                <div>
+                  <p style={{ fontSize: '18px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '6px' }}>4 of Top 10</p>
+                  <p style={{ fontSize: '13px', color: '#666666', lineHeight: 1.6 }}>Fortune 500 leadership — Coca-Cola, J&amp;J, P&amp;G, Danone.</p>
+                </div>
+                <div>
+                  <p style={{ fontSize: '18px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '6px' }}>Cultural Adaptability</p>
+                  <p style={{ fontSize: '13px', color: '#666666', lineHeight: 1.6 }}>Diverse cultural insights driving global strategies.</p>
+                </div>
+                <div>
+                  <p style={{ fontSize: '18px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif", marginBottom: '6px' }}>Operational Excellence</p>
+                  <p style={{ fontSize: '13px', color: '#666666', lineHeight: 1.6 }}>Effective management practices enhancing performance.</p>
+                </div>
               </div>
             </div>
           </div>
