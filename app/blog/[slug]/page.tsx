@@ -74,7 +74,7 @@ export default async function BlogPostPage(
               className="blog-post-grid"
             >
               {/* Left: post body */}
-              <div style={{ background: '#ffffff', borderRadius: '6px', padding: '48px' }}>
+              <div style={{ background: '#ffffff', borderRadius: '6px', padding: '48px', minWidth: 0, overflowWrap: 'break-word' }}>
                 {post.body.length > 0 ? (
                   post.body.map((para, i) => (
                     <p
