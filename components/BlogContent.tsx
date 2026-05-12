@@ -16,6 +16,8 @@ const categories = [
   'Curiosity-Driven Leadership',
 ];
 
+// category names in posts must match exactly
+
 export default function BlogContent() {
   const [active, setActive] = useState('All');
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
