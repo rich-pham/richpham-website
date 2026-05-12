@@ -52,8 +52,8 @@ export default async function BlogPostPage(
               Rich Pham &nbsp;·&nbsp; {post.date}
             </p>
           </div>
-          <div className="section-container" style={{ padding: '0 32px' }}>
-            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', borderRadius: '6px 6px 0 0' }}>
+          <div className="section-container" style={{ padding: '0 32px 80px' }}>
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', borderRadius: '6px' }}>
               <Image
                 src={post.image}
                 alt={post.title}
@@ -70,7 +70,7 @@ export default async function BlogPostPage(
         <section style={{ background: '#F4F4F4', padding: '80px 0' }}>
           <div className="section-container">
             <div
-              style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '48px', alignItems: 'start' }}
+              style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: '48px', alignItems: 'start' }}
               className="blog-post-grid"
             >
               {/* Left: post body */}
