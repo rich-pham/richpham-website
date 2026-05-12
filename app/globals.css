@@ -234,7 +234,7 @@ a { text-decoration: none; }
   .eo-grid           { grid-template-columns: 1fr !important; gap: 40px !important; }
   .eo-h3             { font-size: 28px !important; }
   .global-h3         { font-size: 32px !important; }
-  .global-stats-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+  .global-stats-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
   .approach-grid     { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
   .racing-grid       { grid-template-columns: 1fr !important; }
   .racing-h3         { font-size: 28px !important; }
