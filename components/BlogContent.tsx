@@ -1,10 +1,19 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const categories = ['All', 'Racing Through Life', 'Reinvent to Succeed'];
+const PAGE_SIZE = 9;
+
+const categories = [
+  'All',
+  'Racing Through Life',
+  'Reinvent to Succeed',
+  'People Power',
+  'Lessons from the Real World',
+  'Curiosity-Driven Leadership',
+];
 
 const posts = [
   {
@@ -75,7 +84,32 @@ const posts = [
 
 export default function BlogContent() {
   const [active, setActive] = useState('All');
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
   const filtered = active === 'All' ? posts : posts.filter((p) => p.category === active);
+  const visible = filtered.slice(0, visibleCount);
+  const hasMore = visibleCount < filtered.length;
+
+  const loadMore = useCallback(() => {
+    setVisibleCount((n) => n + PAGE_SIZE);
+  }, []);
+
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [active]);
+
+  useEffect(() => {
+    if (!hasMore) return;
+    const sentinel = sentinelRef.current;
+    if (!sentinel) return;
+    const observer = new IntersectionObserver(
+      (entries) => { if (entries[0].isIntersecting) loadMore(); },
+      { rootMargin: '200px' }
+    );
+    observer.observe(sentinel);
+    return () => observer.disconnect();
+  }, [hasMore, loadMore]);
 
   return (
     <>
@@ -94,7 +128,7 @@ export default function BlogContent() {
             </h1>
           </div>
         </div>
-        <div style={{ position: 'relative', aspectRatio: '3/4' }} className="about-hero-img">
+        <div style={{ position: 'relative', aspectRatio: '4/3' }} className="about-hero-img">
           <Image
             src="/images/blog.jpg"
             alt="Rich Pham Blog"
@@ -118,18 +152,18 @@ export default function BlogContent() {
                   background: 'none',
                   border: 'none',
                   borderBottom: active === cat ? '3px solid #F4D462' : '3px solid transparent',
-                  padding: '20px 28px',
+                  padding: '20px 24px',
                   cursor: 'pointer',
                   fontFamily: "'NunitoSans', sans-serif",
                   fontWeight: 800,
-                  fontSize: '14px',
+                  fontSize: '13px',
                   color: active === cat ? '#0F2A71' : '#888888',
                   transition: 'color 0.2s ease, border-color 0.2s ease',
                   whiteSpace: 'nowrap',
                   marginBottom: '-1px',
                 }}
               >
-                {cat}
+                {cat.toUpperCase()}
               </button>
             ))}
           </div>
@@ -143,7 +177,7 @@ export default function BlogContent() {
             style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px' }}
             className="blog-grid"
           >
-            {filtered.map((post) => (
+            {visible.map((post) => (
               <Link
                 key={post.href}
                 href={post.href}
@@ -151,6 +185,7 @@ export default function BlogContent() {
                 rel="noopener noreferrer"
                 className="blog-card"
               >
+                {/* Image */}
                 <div style={{ position: 'relative', aspectRatio: '16/9', overflow: 'hidden' }}>
                   <Image
                     src={post.image}
@@ -159,31 +194,40 @@ export default function BlogContent() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     style={{ objectFit: 'cover' }}
                   />
-                  <div style={{
-                    position: 'absolute',
-                    top: '12px',
-                    left: '12px',
-                    background: '#F4D462',
-                    color: '#001740',
-                    fontSize: '10px',
-                    fontWeight: 800,
-                    fontFamily: "'NunitoSans', sans-serif",
-                    textTransform: 'uppercase',
-                    padding: '4px 10px',
-                    borderRadius: '3px',
-                  }}>
-                    {post.category}
-                  </div>
                 </div>
-                <div style={{ padding: '24px', background: '#ffffff' }}>
-                  <p className="blog-card-title" style={{ fontSize: '16px', fontWeight: 800, lineHeight: 1.4, fontFamily: "'NunitoSans', sans-serif", marginBottom: '12px' }}>
+
+                <div style={{ padding: '20px 24px 24px', background: '#ffffff' }}>
+                  {/* Category tag — only on All */}
+                  {active === 'All' && (
+                    <p style={{
+                      display: 'inline-block',
+                      fontSize: '10px',
+                      fontWeight: 800,
+                      fontFamily: "'NunitoSans', sans-serif",
+                      textTransform: 'uppercase',
+                      color: '#0F2A71',
+                      background: '#F4D462',
+                      padding: '3px 8px',
+                      borderRadius: '3px',
+                      marginBottom: '12px',
+                    }}>
+                      {post.category}
+                    </p>
+                  )}
+
+                  {/* Title */}
+                  <p className="blog-card-title" style={{ fontSize: '16px', fontWeight: 800, lineHeight: 1.4, fontFamily: "'NunitoSans', sans-serif", marginBottom: '10px' }}>
                     {post.title}
                   </p>
+
+                  {/* Date */}
                   {(post.date || post.readTime) && (
                     <p style={{ fontSize: '12px', color: '#999999', fontFamily: "'NunitoSans', sans-serif", marginBottom: '12px' }}>
                       {[post.date, post.readTime].filter(Boolean).join(' · ')}
                     </p>
                   )}
+
+                  {/* CTA */}
                   <p className="blog-card-link" style={{ fontSize: '13px', fontWeight: 800, fontFamily: "'NunitoSans', sans-serif" }}>
                     Read more →
                   </p>
@@ -191,6 +235,9 @@ export default function BlogContent() {
               </Link>
             ))}
           </div>
+
+          {/* Infinite scroll sentinel */}
+          {hasMore && <div ref={sentinelRef} style={{ height: '1px', marginTop: '40px' }} />}
         </div>
       </section>
     </>
