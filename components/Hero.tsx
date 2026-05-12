@@ -25,7 +25,7 @@ export default function Hero() {
             }}
           >
             Unlock the{' '}
-            <span style={{ color: '#ff0000' }}>Bottlenecks</span>
+            <span style={{ color: '#0F2A71' }}>Bottlenecks</span>
             {' '}of Your Business
           </h1>
 

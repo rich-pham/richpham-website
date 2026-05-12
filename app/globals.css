@@ -17,7 +17,7 @@
 }
 
 :root {
-  --color-primary-navy: #ff0000;
+  --color-primary-navy: #0F2A71;
   --color-secondary-navy: #001740;
   --color-primary-cta: #F4D462;
   --color-bg-primary: #ffffff;
@@ -92,8 +92,8 @@ a { text-decoration: none; }
 
 .btn-secondary {
   background: transparent;
-  color: #ff0000;
-  border: 1px solid #ff0000;
+  color: #0F2A71;
+  border: 1px solid #0F2A71;
   border-radius: 6px;
   padding: 14px 28px;
   font-family: 'NunitoSans', sans-serif;
@@ -106,7 +106,7 @@ a { text-decoration: none; }
   line-height: 1;
 }
 .btn-secondary:hover {
-  background: #ff0000;
+  background: #0F2A71;
   color: #F4D462;
 }
 

@@ -5,7 +5,7 @@ const stats = [
 
 export default function StatsBar() {
   return (
-    <section style={{ background: '#ff0000', padding: '56px 0' }}>
+    <section style={{ background: '#0F2A71', padding: '56px 0' }}>
       <div className="section-container">
         <div
           style={{
