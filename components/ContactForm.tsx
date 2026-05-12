@@ -62,45 +62,42 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
-        <div>
-          <label htmlFor="name" style={labelStyle}>Name *</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            required
-            value={form.name}
-            onChange={handleChange}
-            style={inputStyle}
-            placeholder="Jane Smith"
-          />
-        </div>
-        <div>
-          <label htmlFor="email" style={labelStyle}>Email *</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            required
-            value={form.email}
-            onChange={handleChange}
-            style={inputStyle}
-            placeholder="jane@company.com"
-          />
-        </div>
+      <div>
+        <label htmlFor="name" style={labelStyle}>Full name *</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          value={form.name}
+          onChange={handleChange}
+          style={inputStyle}
+        />
       </div>
 
       <div>
-        <label htmlFor="company" style={labelStyle}>Company</label>
+        <label htmlFor="company" style={labelStyle}>Company name *</label>
         <input
           id="company"
           name="company"
           type="text"
+          required
           value={form.company}
           onChange={handleChange}
           style={inputStyle}
-          placeholder="Acme Inc."
+        />
+      </div>
+
+      <div>
+        <label htmlFor="email" style={labelStyle}>Email *</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          value={form.email}
+          onChange={handleChange}
+          style={inputStyle}
         />
       </div>
 
@@ -114,12 +111,11 @@ export default function ContactForm() {
           value={form.message}
           onChange={handleChange}
           style={{ ...inputStyle, resize: 'vertical' }}
-          placeholder="Tell me what you're working through..."
         />
       </div>
 
       {status === 'error' && (
-        <p style={{ fontSize: '14px', color: '#ff0000' }}>
+        <p style={{ fontSize: '14px', color: '#cc0000' }}>
           Something went wrong. Please try again.
         </p>
       )}
@@ -131,7 +127,7 @@ export default function ContactForm() {
           className="btn-primary"
           style={{ opacity: status === 'sending' ? 0.6 : 1 }}
         >
-          {status === 'sending' ? 'Sending…' : 'Send Message →'}
+          {status === 'sending' ? 'Sending…' : 'Submit'}
         </button>
       </div>
     </form>
