@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="section-container" style={{ width: '100%', padding: '72px 32px' }}>
         <div style={{ maxWidth: '900px' }}>
           <h1
-            className="fade-in-up"
+            className="fade-in-up hero-h1"
             style={{
               fontSize: '80px',
               lineHeight: 1.0,
@@ -30,6 +30,7 @@ export default function Hero() {
           </h1>
 
           <div
+            className="hero-body-row"
             style={{
               display: 'flex',
               alignItems: 'flex-end',

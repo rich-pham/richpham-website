@@ -281,6 +281,7 @@ export default function Accordion() {
 
         {/* 2-column 1:1 */}
         <div
+          className="accordion-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
@@ -304,9 +305,9 @@ export default function Accordion() {
           </div>
 
           {/* Col 2 — Image (top) + CTA (bottom) */}
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div className="accordion-right-col" style={{ display: 'flex', flexDirection: 'column' }}>
             {/* Row 1: image */}
-            <div style={{ position: 'relative', flex: 1, minHeight: '300px' }}>
+            <div className="accordion-image-row" style={{ position: 'relative', flex: 1, minHeight: '300px' }}>
               <Image
                 src={tabs[active].image}
                 alt={tabs[active].label}
