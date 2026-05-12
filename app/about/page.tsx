@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
 import AboutApproach from '@/components/about/AboutApproach';
+import CTABanner from '@/components/CTABanner';
 
 export const metadata: Metadata = {
   title: 'About Rich Pham | Former CEO & Executive Advisor',
@@ -138,8 +139,7 @@ export default function AboutPage() {
                 Now, <strong style={{ color: '#ffffff' }}>I help C-level executives and owners do the same.</strong> Every business hits a plateau, and that's where real experience matters. Whether you're trying to get unstuck, lead more effectively, or build systems that free you to focus on the bigger picture, I bring the clarity and perspective to help you move forward with confidence.
               </p>
               <div>
-                <p style={{ fontFamily: 'var(--font-handwriting)', fontSize: '36px', color: '#ffffff', marginBottom: '4px' }}>Rich Pham</p>
-                <p style={{ fontFamily: "'NunitoSans', sans-serif", fontWeight: 800, fontSize: '14px', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Rich Pham</p>
+                <p style={{ fontFamily: 'var(--font-handwriting)', fontSize: '36px', color: '#ffffff' }}>Rich Pham</p>
               </div>
             </div>
           </div>
@@ -301,42 +301,51 @@ export default function AboutPage() {
         {/* ── Global Experience ── */}
         <section style={{ background: '#ffffff', padding: '96px 0' }}>
           <div className="section-container">
+            {/* Heading */}
+            <h3
+              style={{ fontSize: '40px', lineHeight: 1.2, fontWeight: 800, color: '#0F2A71', marginBottom: '48px' }}
+              className="global-h3"
+            >
+              Extensive Global Experience
+            </h3>
+            {/* Map — full width */}
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/7', borderRadius: '6px', overflow: 'hidden', marginBottom: '56px' }}>
+              <Image
+                src="/images/about/map.png"
+                alt="Global experience map"
+                fill
+                sizes="100vw"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+            {/* 4-col stats */}
             <div
-              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}
+              style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px' }}
               className="global-stats-grid"
             >
-              {/* Left: text content */}
               <div>
-                <h3
-                  style={{ fontSize: '40px', lineHeight: 1.2, fontWeight: 800, color: '#0F2A71', marginBottom: '40px' }}
-                  className="global-h3"
-                >
-                  Extensive Global Experience
-                </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-                  <div>
-                    <div style={{ fontSize: '56px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif", lineHeight: 1 }}>11+</div>
-                    <div style={{ fontSize: '15px', color: '#444444', marginTop: '10px', lineHeight: 1.6 }}>
-                      Countries of hands-on global experience, leading and adapting across diverse markets.
-                    </div>
-                  </div>
-                  <div>
-                    <div style={{ fontSize: '56px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif", lineHeight: 1 }}>4/10</div>
-                    <div style={{ fontSize: '15px', color: '#444444', marginTop: '10px', lineHeight: 1.6 }}>
-                      Senior leadership roles in four of the top ten Fortune 500 companies — Coca-Cola, J&amp;J, P&amp;G, and Danone.
-                    </div>
-                  </div>
+                <div style={{ fontSize: '56px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif", lineHeight: 1 }}>11+</div>
+                <div style={{ fontSize: '14px', color: '#444444', marginTop: '10px', lineHeight: 1.6 }}>
+                  Countries of hands-on global experience, leading and adapting across diverse markets.
                 </div>
               </div>
-              {/* Right: map image */}
-              <div style={{ position: 'relative', borderRadius: '6px', overflow: 'hidden', aspectRatio: '4/3' }}>
-                <Image
-                  src="/images/about/map.png"
-                  alt="Global experience map"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  style={{ objectFit: 'cover' }}
-                />
+              <div>
+                <div style={{ fontSize: '56px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif", lineHeight: 1 }}>4/10</div>
+                <div style={{ fontSize: '14px', color: '#444444', marginTop: '10px', lineHeight: 1.6 }}>
+                  Senior leadership roles in four of the top ten Fortune 500 companies — Coca-Cola, J&amp;J, P&amp;G, and Danone.
+                </div>
+              </div>
+              <div>
+                <h4 style={{ fontSize: '16px', fontWeight: 800, color: '#0F2A71', marginBottom: '10px', fontFamily: "'NunitoSans', sans-serif" }}>Cultural Adaptability</h4>
+                <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#444444' }}>
+                  Leveraged diverse cultural insights to drive global strategies.
+                </p>
+              </div>
+              <div>
+                <h4 style={{ fontSize: '16px', fontWeight: 800, color: '#0F2A71', marginBottom: '10px', fontFamily: "'NunitoSans', sans-serif" }}>Operational Excellence</h4>
+                <p style={{ fontSize: '14px', lineHeight: 1.65, color: '#444444' }}>
+                  Enhanced performance through effective management practices.
+                </p>
               </div>
             </div>
           </div>
@@ -434,19 +443,7 @@ export default function AboutPage() {
         </section>
 
         {/* ── CTA Banner ── */}
-        <section style={{ background: '#0F2A71', padding: '96px 0' }}>
-          <div className="section-container" style={{ textAlign: 'center' }}>
-            <h2 style={{ fontSize: '48px', lineHeight: 1.2, fontWeight: 800, color: '#ffffff', marginBottom: '20px' }} className="blog-h2">
-              Ready to Move Forward?
-            </h2>
-            <p style={{ fontSize: '18px', lineHeight: 1.7, color: 'rgba(255,255,255,0.8)', marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
-              Whether you need a strategic sounding board, a keynote speaker, or a long-term advisor — let's start the conversation.
-            </p>
-            <Link href="/contact" className="btn-primary">
-              Invite Rich to Speak
-            </Link>
-          </div>
-        </section>
+        <CTABanner />
 
       </main>
       <Footer />
