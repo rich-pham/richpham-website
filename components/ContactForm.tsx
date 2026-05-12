@@ -4,12 +4,12 @@ import { useState } from 'react';
 
 const inputStyle = {
   width: '100%',
-  background: '#F4F4F4',
-  border: '1px solid #E0E0E0',
+  background: 'rgba(255,255,255,0.10)',
+  border: '1px solid rgba(255,255,255,0.25)',
   borderRadius: '6px',
   padding: '14px 16px',
   fontSize: '15px',
-  color: '#000000',
+  color: '#ffffff',
   fontFamily: "'NunitoSans', sans-serif",
   outline: 'none',
   boxSizing: 'border-box' as const,
@@ -19,7 +19,7 @@ const labelStyle = {
   display: 'block',
   fontSize: '13px',
   fontWeight: 800,
-  color: '#000000',
+  color: 'rgba(255,255,255,0.85)',
   marginBottom: '8px',
   fontFamily: "'NunitoSans', sans-serif",
 };
