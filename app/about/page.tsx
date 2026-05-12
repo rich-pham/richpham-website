@@ -36,18 +36,18 @@ const racingAchievements = [
 const blogPosts = [
   {
     title: "From Zero to Factory: How I Brought Pocari Sweat to Vietnam's Fast Lane",
-    href: '/post/from-zero-to-factory-how-i-brought-pocari-sweat-to-vietnam-s-fast-lane',
-    image: '/images/about/pocari-sweat.jpg',
+    href: 'https://www.richpham.com/post/from-zero-to-factory-how-i-brought-pocari-sweat-to-vietnam-s-fast-lane',
+    image: '/images/about/blog-pocari.png',
   },
   {
     title: 'How a Leadership Coach Can Help You Spot Untapped Opportunities',
-    href: '/post/how-a-leadership-coach-can-help-you-spot-untapped-opportunities',
-    image: '/images/about/rich.jpg',
+    href: 'https://www.richpham.com/post/how-a-leadership-coach-can-help-you-spot-untapped-opportunities',
+    image: '/images/about/blog-leadership-coach.jpg',
   },
   {
     title: 'How Perseverance Builds Resilient Businesses',
-    href: '/post/how-perseverance-builds-resilient-businesses',
-    image: '/images/about/world-class-racing-driver.jpg',
+    href: 'https://www.richpham.com/post/how-perseverance-builds-resilient-businesses',
+    image: '/images/about/blog-perseverance.jpg',
   },
 ];
 
@@ -67,7 +67,7 @@ export default function AboutPage() {
         {/* ── Hero ── */}
         <section
           style={{
-            background: '#0F2A71',
+            background: '#001740',
             paddingTop: '72px',
             overflow: 'visible',
           }}
@@ -90,8 +90,8 @@ export default function AboutPage() {
               <div style={{ padding: '72px 0 48px' }}>
                 <h1
                   style={{
-                    fontSize: '72px',
-                    lineHeight: 1.05,
+                    fontSize: '56px',
+                    lineHeight: 1.1,
                     fontWeight: 800,
                     color: '#ffffff',
                     marginBottom: '28px',
@@ -138,8 +138,8 @@ export default function AboutPage() {
                 Now, <strong style={{ color: '#ffffff' }}>I help C-level executives and owners do the same.</strong> Every business hits a plateau, and that's where real experience matters. Whether you're trying to get unstuck, lead more effectively, or build systems that free you to focus on the bigger picture, I bring the clarity and perspective to help you move forward with confidence.
               </p>
               <div>
-                <p style={{ fontFamily: 'Georgia, serif', fontStyle: 'italic', fontSize: '28px', color: '#ffffff', marginBottom: '8px' }}>Rich Pham</p>
-                <p style={{ fontFamily: "'NunitoSans', sans-serif", fontWeight: 800, fontSize: '15px', color: 'rgba(255,255,255,0.7)' }}>Rich Pham</p>
+                <p style={{ fontFamily: 'var(--font-handwriting)', fontSize: '36px', color: '#ffffff', marginBottom: '4px' }}>Rich Pham</p>
+                <p style={{ fontFamily: "'NunitoSans', sans-serif", fontWeight: 800, fontSize: '14px', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Rich Pham</p>
               </div>
             </div>
           </div>
@@ -226,10 +226,10 @@ export default function AboutPage() {
                     gap: '20px',
                   }}
                 >
-                  <span style={{ fontSize: '13px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif" }}>
+                  <span style={{ fontSize: '15px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif" }}>
                     {m.milestone}
                   </span>
-                  <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6 }}>
+                  <span style={{ fontSize: '15px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6 }}>
                     {m.detail}
                   </span>
                 </div>
@@ -287,7 +287,7 @@ export default function AboutPage() {
                       borderBottom: i < eoRoles.length - 1 ? '1px solid #E0E0E0' : 'none',
                     }}
                   >
-                    <p style={{ fontSize: '14px', fontWeight: 800, color: '#0F2A71', marginBottom: '6px', fontFamily: "'NunitoSans', sans-serif" }}>
+                    <p style={{ fontSize: '16px', fontWeight: 800, color: '#0F2A71', marginBottom: '6px', fontFamily: "'NunitoSans', sans-serif" }}>
                       {r.role}
                     </p>
                     <p style={{ fontSize: '15px', lineHeight: 1.65, color: '#000000' }}>{r.detail}</p>
@@ -299,41 +299,44 @@ export default function AboutPage() {
         </section>
 
         {/* ── Global Experience ── */}
-        <section style={{ background: '#0F2A71', padding: '96px 0' }}>
+        <section style={{ background: '#ffffff', padding: '96px 0' }}>
           <div className="section-container">
-            <h3
-              style={{ fontSize: '40px', lineHeight: 1.2, fontWeight: 800, color: '#ffffff', marginBottom: '56px', maxWidth: '600px' }}
-              className="global-h3"
-            >
-              Extensive Global Experience
-            </h3>
             <div
-              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '40px', marginBottom: '56px' }}
+              style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}
               className="global-stats-grid"
             >
+              {/* Left: text content */}
               <div>
-                <div style={{ fontSize: '64px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif", lineHeight: 1 }}>11+</div>
-                <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.75)', marginTop: '10px', lineHeight: 1.5 }}>
-                  Countries of hands-on global experience, leading and adapting across diverse markets.
+                <h3
+                  style={{ fontSize: '40px', lineHeight: 1.2, fontWeight: 800, color: '#0F2A71', marginBottom: '40px' }}
+                  className="global-h3"
+                >
+                  Extensive Global Experience
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+                  <div>
+                    <div style={{ fontSize: '56px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif", lineHeight: 1 }}>11+</div>
+                    <div style={{ fontSize: '15px', color: '#444444', marginTop: '10px', lineHeight: 1.6 }}>
+                      Countries of hands-on global experience, leading and adapting across diverse markets.
+                    </div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '56px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif", lineHeight: 1 }}>4/10</div>
+                    <div style={{ fontSize: '15px', color: '#444444', marginTop: '10px', lineHeight: 1.6 }}>
+                      Senior leadership roles in four of the top ten Fortune 500 companies — Coca-Cola, J&amp;J, P&amp;G, and Danone.
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div>
-                <div style={{ fontSize: '64px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif", lineHeight: 1 }}>4/10</div>
-                <div style={{ fontSize: '14px', color: 'rgba(255,255,255,0.75)', marginTop: '10px', lineHeight: 1.5 }}>
-                  Senior leadership roles in four of the top ten Fortune 500 companies — Coca-Cola, J&J, P&G, and Danone.
-                </div>
-              </div>
-              <div>
-                <h4 style={{ fontSize: '18px', fontWeight: 800, color: '#ffffff', marginBottom: '10px' }}>Cultural Adaptability</h4>
-                <p style={{ fontSize: '15px', lineHeight: 1.65, color: 'rgba(255,255,255,0.75)' }}>
-                  Leveraged diverse cultural insights to drive global strategies.
-                </p>
-              </div>
-              <div>
-                <h4 style={{ fontSize: '18px', fontWeight: 800, color: '#ffffff', marginBottom: '10px' }}>Operational Excellence</h4>
-                <p style={{ fontSize: '15px', lineHeight: 1.65, color: 'rgba(255,255,255,0.75)' }}>
-                  Enhanced performance through effective management practices.
-                </p>
+              {/* Right: map image */}
+              <div style={{ position: 'relative', borderRadius: '6px', overflow: 'hidden', aspectRatio: '4/3' }}>
+                <Image
+                  src="/images/about/map.png"
+                  alt="Global experience map"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  style={{ objectFit: 'cover' }}
+                />
               </div>
             </div>
           </div>
@@ -344,10 +347,10 @@ export default function AboutPage() {
           style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '520px' }}
           className="racing-grid"
         >
-          {/* Content left — dark */}
-          <div style={{ background: '#0a0a0a', padding: '64px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          {/* Content left — light grey */}
+          <div style={{ background: '#F4F4F4', padding: '64px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <h3
-              style={{ fontSize: '36px', lineHeight: 1.2, fontWeight: 800, color: '#ffffff', marginBottom: '36px' }}
+              style={{ fontSize: '36px', lineHeight: 1.2, fontWeight: 800, color: '#0F2A71', marginBottom: '36px' }}
               className="racing-h3"
             >
               World-Class Racing Driver
@@ -358,16 +361,16 @@ export default function AboutPage() {
                   key={a.achievement}
                   style={{
                     padding: '16px 0',
-                    borderBottom: i < racingAchievements.length - 1 ? '1px solid rgba(255,255,255,0.10)' : 'none',
+                    borderBottom: i < racingAchievements.length - 1 ? '1px solid #E0E0E0' : 'none',
                     display: 'grid',
                     gridTemplateColumns: '1fr 2fr',
                     gap: '20px',
                   }}
                 >
-                  <span style={{ fontSize: '13px', fontWeight: 800, color: '#F4D462', fontFamily: "'NunitoSans', sans-serif" }}>
+                  <span style={{ fontSize: '15px', fontWeight: 800, color: '#0F2A71', fontFamily: "'NunitoSans', sans-serif" }}>
                     {a.achievement}
                   </span>
-                  <span style={{ fontSize: '14px', color: 'rgba(255,255,255,0.80)', lineHeight: 1.6 }}>
+                  <span style={{ fontSize: '15px', color: '#444444', lineHeight: 1.6 }}>
                     {a.detail}
                   </span>
                 </div>
@@ -403,7 +406,9 @@ export default function AboutPage() {
                 <Link
                   key={post.href}
                   href={post.href}
-                  style={{ textDecoration: 'none', display: 'block', borderRadius: '6px', overflow: 'hidden', border: '1px solid #E0E0E0' }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="blog-card"
                 >
                   <div style={{ position: 'relative', aspectRatio: '16/9' }}>
                     <Image
@@ -415,16 +420,31 @@ export default function AboutPage() {
                     />
                   </div>
                   <div style={{ padding: '24px' }}>
-                    <p style={{ fontSize: '16px', fontWeight: 800, color: '#0F2A71', lineHeight: 1.4, fontFamily: "'NunitoSans', sans-serif" }}>
+                    <p className="blog-card-title" style={{ fontSize: '16px', fontWeight: 800, lineHeight: 1.4, fontFamily: "'NunitoSans', sans-serif" }}>
                       {post.title}
                     </p>
-                    <p style={{ fontSize: '14px', color: '#0F2A71', marginTop: '12px', fontWeight: 800, fontFamily: "'NunitoSans', sans-serif" }}>
+                    <p className="blog-card-link" style={{ fontSize: '14px', marginTop: '12px', fontWeight: 800, fontFamily: "'NunitoSans', sans-serif" }}>
                       Read more →
                     </p>
                   </div>
                 </Link>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── CTA Banner ── */}
+        <section style={{ background: '#0F2A71', padding: '96px 0' }}>
+          <div className="section-container" style={{ textAlign: 'center' }}>
+            <h2 style={{ fontSize: '48px', lineHeight: 1.2, fontWeight: 800, color: '#ffffff', marginBottom: '20px' }} className="blog-h2">
+              Ready to Move Forward?
+            </h2>
+            <p style={{ fontSize: '18px', lineHeight: 1.7, color: 'rgba(255,255,255,0.8)', marginBottom: '40px', maxWidth: '560px', margin: '0 auto 40px' }}>
+              Whether you need a strategic sounding board, a keynote speaker, or a long-term advisor — let's start the conversation.
+            </p>
+            <Link href="/contact" className="btn-primary">
+              Invite Rich to Speak
+            </Link>
           </div>
         </section>
 

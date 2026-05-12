@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
+import { Dancing_Script } from 'next/font/google';
 import './globals.css';
+
+const dancingScript = Dancing_Script({ subsets: ['latin'], weight: ['700'], variable: '--font-handwriting' });
 
 export const metadata: Metadata = {
   title: 'Rich Pham | Executive Advisor for Scaling CEOs',
@@ -11,7 +14,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={dancingScript.variable}>{children}</body>
     </html>
   );
 }

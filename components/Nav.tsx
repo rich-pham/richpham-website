@@ -31,8 +31,7 @@ export default function Nav() {
         zIndex: 100,
         background: '#ffffff',
         borderBottom: scrolled ? '1px solid #E0E0E0' : '1px solid transparent',
-        boxShadow: scrolled ? '0 2px 12px rgba(0,0,0,0.06)' : 'none',
-        transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
+        transition: 'border-color 0.3s ease',
       }}
     >
       <div

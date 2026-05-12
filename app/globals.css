@@ -32,6 +32,9 @@
   letter-spacing: 0 !important;
   box-sizing: border-box;
 }
+[style*="--font-handwriting"], .font-handwriting {
+  letter-spacing: normal !important;
+}
 
 html {
   scroll-behavior: smooth;
@@ -109,6 +112,21 @@ a { text-decoration: none; }
   background: #0F2A71;
   color: #F4D462;
 }
+
+/* ── Blog cards ── */
+.blog-card {
+  text-decoration: none;
+  display: block;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #E0E0E0;
+  transition: box-shadow 0.2s ease;
+}
+.blog-card:hover { box-shadow: 0 4px 20px rgba(15,42,113,0.12); }
+.blog-card-title { color: #0F2A71; transition: color 0.2s ease; }
+.blog-card-link  { color: #0F2A71; transition: color 0.2s ease; }
+.blog-card:hover .blog-card-title { color: #F4D462; }
+.blog-card:hover .blog-card-link  { color: #F4D462; }
 
 /* ── Animations ── */
 @keyframes fadeInUp {
@@ -216,7 +234,7 @@ a { text-decoration: none; }
   .eo-grid           { grid-template-columns: 1fr !important; gap: 40px !important; }
   .eo-h3             { font-size: 28px !important; }
   .global-h3         { font-size: 32px !important; }
-  .global-stats-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
+  .global-stats-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
   .racing-grid       { grid-template-columns: 1fr !important; }
   .racing-h3         { font-size: 28px !important; }
   .blog-h2           { font-size: 32px !important; }
