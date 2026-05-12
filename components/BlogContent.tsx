@@ -208,7 +208,7 @@ export default function BlogContent() {
                       fontFamily: "'NunitoSans', sans-serif",
                       textTransform: 'uppercase',
                       color: '#F4D462',
-                      background: '#F4F4F4',
+                      background: '#ffffff',
                       border: '1px solid #F4D462',
                       padding: '3px 8px',
                       borderRadius: '3px',
