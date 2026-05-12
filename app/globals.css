@@ -241,4 +241,5 @@ a { text-decoration: none; }
   .about-hero-grid   { grid-template-columns: 1fr !important; }
   .about-hero-text   { padding: 48px 20px !important; justify-content: flex-start !important; }
   .bio-grid          { grid-template-columns: 1fr !important; gap: 48px !important; }
+  .contact-hero-img  { max-height: none !important; margin-bottom: 0 !important; aspect-ratio: 3/4; width: 100%; }
 }
