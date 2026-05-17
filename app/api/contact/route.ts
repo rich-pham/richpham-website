@@ -69,7 +69,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Notification email (fire-and-forget; don't fail the request if it errors)
+    // Notification email (don't fail the request if it errors, but report status
+    // back so failures are visible in dev tools / debugging).
+    if (!process.env.RESEND_API_KEY) {
+      console.warn('RESEND_API_KEY not set — skipping notification email');
+      return NextResponse.json({
+        success: true,
+        id: inquiryId,
+        emailSent: false,
+        emailError: 'RESEND_API_KEY not configured',
+      });
+    }
+
     const subjectLine = `[${TYPE_LABELS[resolvedType]}] ${name}${company ? ` — ${company}` : ''}`;
 
     const detailsRows: Array<[string, string]> = [
@@ -114,7 +125,12 @@ export async function POST(request: NextRequest) {
       console.error('Resend email error:', emailError);
     }
 
-    return NextResponse.json({ success: true, id: inquiryId });
+    return NextResponse.json({
+      success: true,
+      id: inquiryId,
+      emailSent: !emailError,
+      emailError: emailError?.message ?? null,
+    });
   } catch (err) {
     console.error('Contact API error:', err);
     return NextResponse.json({ error: 'An unexpected error occurred.' }, { status: 500 });

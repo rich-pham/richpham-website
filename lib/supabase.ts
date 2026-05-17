@@ -41,6 +41,22 @@ export const INQUIRY_STATUSES: InquiryStatus[] = [
 
 export const INQUIRY_TYPES: InquiryType[] = ['general', 'coaching', 'speaker', 'newsletter'];
 
+export const STATUS_META: Record<InquiryStatus, { label: string; color: string }> = {
+  new_lead:       { label: 'New Lead',       color: '#287BE8' },
+  contacted:      { label: 'Contacted',      color: '#6b7194' },
+  discovery_call: { label: 'Discovery Call', color: '#D1458B' },
+  proposal:       { label: 'Proposal',       color: '#1a9e74' },
+  won:            { label: 'Won',            color: '#1a9e74' },
+  lost:           { label: 'Lost',           color: '#9ca3af' },
+};
+
+export const TYPE_META: Record<InquiryType, { label: string }> = {
+  general:    { label: 'General' },
+  coaching:   { label: 'Coaching' },
+  speaker:    { label: 'Speaker' },
+  newsletter: { label: 'Newsletter' },
+};
+
 export type InquiryRow = {
   id: string;
   type: InquiryType;
