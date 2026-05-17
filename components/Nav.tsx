@@ -5,6 +5,8 @@ import Link from 'next/link';
 
 const navLinks = [
   { label: 'About', href: '/about' },
+  { label: 'Coaching', href: '/coaching' },
+  { label: 'Speaking', href: '/speakers' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -78,7 +80,7 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <Link href="/contact#form" className="btn-blue">
+          <Link href="/speakers#form" className="btn-blue">
             Invite Rich to Speak
           </Link>
         </div>
@@ -121,7 +123,7 @@ export default function Nav() {
           </Link>
         ))}
         <div className="nav-mobile-cta">
-          <Link href="/contact#form" className="btn-blue" onClick={closeMenu}>
+          <Link href="/speakers#form" className="btn-blue" onClick={closeMenu}>
             Invite Rich to Speak
           </Link>
         </div>

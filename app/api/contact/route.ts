@@ -1,60 +1,106 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
+import { supabase, INQUIRY_TYPES, type InquiryType } from '@/lib/supabase';
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const TYPE_LABELS: Record<InquiryType, string> = {
+  general: 'General',
+  coaching: 'Coaching',
+  speaker: 'Speaker Booking',
+  newsletter: 'Newsletter',
+};
 
 export async function POST(request: NextRequest) {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
   const resend = new Resend(process.env.RESEND_API_KEY);
+
   try {
-    const { name, email, company, message } = await request.json();
+    const body = await request.json();
+    const {
+      name,
+      email,
+      company,
+      phone,
+      role,
+      message,
+      subject,
+      type,
+      source,
+      date_requested,
+      metadata,
+    } = body ?? {};
 
     if (!name?.trim() || !email?.trim() || !message?.trim()) {
-      return NextResponse.json({ error: 'Name, email, and message are required.' }, { status: 400 });
+      return NextResponse.json(
+        { error: 'Name, email, and message are required.' },
+        { status: 400 }
+      );
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json({ error: 'Please provide a valid email address.' }, { status: 400 });
+    if (!EMAIL_REGEX.test(email)) {
+      return NextResponse.json(
+        { error: 'Please provide a valid email address.' },
+        { status: 400 }
+      );
     }
 
-    // Store in Supabase
-    const { error: dbError } = await supabase.from('contact_submissions').insert({
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      company: company?.trim() || null,
-      message: message.trim(),
+    const resolvedType: InquiryType = INQUIRY_TYPES.includes(type) ? type : 'general';
+
+    const { data: inquiryId, error: rpcError } = await supabase.rpc('submit_inquiry', {
+      p_name: name.trim(),
+      p_email: email.trim().toLowerCase(),
+      p_type: resolvedType,
+      p_phone: phone?.trim() || null,
+      p_company: company?.trim() || null,
+      p_role: role?.trim() || null,
+      p_subject: subject?.trim() || null,
+      p_message: message.trim(),
+      p_metadata: metadata && typeof metadata === 'object' ? metadata : {},
+      p_source: source?.trim() || null,
+      p_source_site: 'richpham.com',
+      p_date_requested: date_requested || null,
     });
 
-    if (dbError) {
-      console.error('Supabase insert error:', dbError);
-      return NextResponse.json({ error: 'Failed to save your message. Please try again.' }, { status: 500 });
+    if (rpcError) {
+      console.error('submit_inquiry RPC error:', rpcError);
+      return NextResponse.json(
+        { error: 'Failed to save your message. Please try again.' },
+        { status: 500 }
+      );
     }
 
-    // Send notification email
+    // Notification email (fire-and-forget; don't fail the request if it errors)
+    const subjectLine = `[${TYPE_LABELS[resolvedType]}] ${name}${company ? ` — ${company}` : ''}`;
+
+    const detailsRows: Array<[string, string]> = [
+      ['Type', TYPE_LABELS[resolvedType]],
+      ['Name', name],
+      ['Email', email],
+    ];
+    if (company) detailsRows.push(['Company', company]);
+    if (phone) detailsRows.push(['Phone', phone]);
+    if (role) detailsRows.push(['Role', role]);
+    if (date_requested) detailsRows.push(['Requested date', new Date(date_requested).toLocaleDateString()]);
+
+    const rowsHtml = detailsRows
+      .map(
+        ([k, v]) => `
+        <tr>
+          <td style="padding: 8px 0; font-weight: bold; color: #555; width: 140px;">${k}</td>
+          <td style="padding: 8px 0;">${v}</td>
+        </tr>`
+      )
+      .join('');
+
     const { error: emailError } = await resend.emails.send({
       from: 'Contact Form <onboarding@resend.dev>',
       to: 'phamrich@gmail.com',
-      subject: `New message from ${name}`,
+      subject: subjectLine,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #0F2A71;">New Contact Form Submission</h2>
+          <h2 style="color: #0F2A71;">New ${TYPE_LABELS[resolvedType]} Inquiry</h2>
           <table style="width: 100%; border-collapse: collapse;">
-            <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #555; width: 120px;">Name</td>
-              <td style="padding: 8px 0;">${name}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #555;">Email</td>
-              <td style="padding: 8px 0;"><a href="mailto:${email}">${email}</a></td>
-            </tr>
-            ${company ? `
-            <tr>
-              <td style="padding: 8px 0; font-weight: bold; color: #555;">Company</td>
-              <td style="padding: 8px 0;">${company}</td>
-            </tr>` : ''}
+            ${rowsHtml}
             <tr>
               <td style="padding: 8px 0; font-weight: bold; color: #555; vertical-align: top;">Message</td>
               <td style="padding: 8px 0; white-space: pre-wrap;">${message}</td>
@@ -65,11 +111,10 @@ export async function POST(request: NextRequest) {
     });
 
     if (emailError) {
-      // Log but don't fail — data is already saved
       console.error('Resend email error:', emailError);
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, id: inquiryId });
   } catch (err) {
     console.error('Contact API error:', err);
     return NextResponse.json({ error: 'An unexpected error occurred.' }, { status: 500 });

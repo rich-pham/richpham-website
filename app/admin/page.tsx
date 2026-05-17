@@ -1,14 +1,38 @@
 export const dynamic = 'force-dynamic';
 
-import { createClient } from '@supabase/supabase-js';
+import { Fragment } from 'react';
+import {
+  supabase,
+  INQUIRY_TYPES,
+  INQUIRY_STATUSES,
+  type InquiryRow,
+  type InquiryType,
+  type InquiryStatus,
+} from '@/lib/supabase';
+import StatusSelect from './_components/StatusSelect';
+import FilterPills from './_components/FilterPills';
 
-type Submission = {
-  id: string;
-  name: string;
-  email: string;
-  company: string | null;
-  message: string;
-  created_at: string;
+const TYPE_LABEL: Record<InquiryType, string> = {
+  general: 'General',
+  coaching: 'Coaching',
+  speaker: 'Speaker',
+  newsletter: 'Newsletter',
+};
+
+const STATUS_LABEL: Record<InquiryStatus, string> = {
+  new_lead: 'New lead',
+  contacted: 'Contacted',
+  discovery_call: 'Discovery call',
+  proposal: 'Proposal',
+  won: 'Won',
+  lost: 'Lost',
+};
+
+const TYPE_COLOR: Record<InquiryType, string> = {
+  general: '#6B7280',
+  coaching: '#0F2A71',
+  speaker: '#B45309',
+  newsletter: '#047857',
 };
 
 function formatDate(iso: string) {
@@ -22,16 +46,32 @@ function formatDate(iso: string) {
   });
 }
 
-export default async function AdminPage() {
-  const supabase = createClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
+function isValidType(value: string | undefined): value is InquiryType {
+  return !!value && (INQUIRY_TYPES as readonly string[]).includes(value);
+}
 
-  const { data: submissions, error } = await supabase
-    .from('contact_submissions')
-    .select('*')
-    .order('created_at', { ascending: false });
+function isValidStatus(value: string | undefined): value is InquiryStatus {
+  return !!value && (INQUIRY_STATUSES as readonly string[]).includes(value);
+}
+
+export default async function AdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string; status?: string }>;
+}) {
+  const { type: typeParam, status: statusParam } = await searchParams;
+  const typeFilter = isValidType(typeParam) ? typeParam : null;
+  const statusFilter = isValidStatus(statusParam) ? statusParam : null;
+
+  const { data, error } = await supabase.rpc('get_inquiries', {
+    p_type: typeFilter,
+    p_status: statusFilter,
+    p_source_site: null,
+    p_limit: 200,
+    p_offset: 0,
+  });
+
+  const inquiries = (data ?? []) as InquiryRow[];
 
   return (
     <div
@@ -45,7 +85,7 @@ export default async function AdminPage() {
       <div style={{ background: '#0F2A71', padding: '0 40px' }}>
         <div
           style={{
-            maxWidth: '1100px',
+            maxWidth: '1200px',
             margin: '0 auto',
             display: 'flex',
             alignItems: 'center',
@@ -66,29 +106,54 @@ export default async function AdminPage() {
               textTransform: 'uppercase',
             }}
           >
-            Contact Submissions
+            Inquiries
           </span>
         </div>
       </div>
 
-      {/* Body */}
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '40px' }}>
-        <div style={{ marginBottom: '32px', display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px' }}>
+        {/* Count */}
+        <div style={{ marginBottom: '24px', display: 'flex', alignItems: 'baseline', gap: '8px' }}>
           <span style={{ fontSize: '32px', fontWeight: 800, color: '#0F2A71' }}>
-            {submissions?.length ?? 0}
+            {inquiries.length}
           </span>
           <span style={{ fontSize: '16px', color: 'rgba(0,0,0,0.5)' }}>
-            {submissions?.length === 1 ? 'submission' : 'submissions'}
+            {inquiries.length === 1 ? 'inquiry' : 'inquiries'}
+            {(typeFilter || statusFilter) && ' matching filters'}
           </span>
+        </div>
+
+        {/* Filters */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '32px' }}>
+          <FilterPills
+            label="Type"
+            paramKey="type"
+            current={typeFilter}
+            baseParams={{ status: statusFilter ?? undefined }}
+            options={[
+              { label: 'All', value: null },
+              ...INQUIRY_TYPES.map((t) => ({ label: TYPE_LABEL[t], value: t })),
+            ]}
+          />
+          <FilterPills
+            label="Status"
+            paramKey="status"
+            current={statusFilter}
+            baseParams={{ type: typeFilter ?? undefined }}
+            options={[
+              { label: 'All', value: null },
+              ...INQUIRY_STATUSES.map((s) => ({ label: STATUS_LABEL[s], value: s })),
+            ]}
+          />
         </div>
 
         {error && (
           <p style={{ color: '#c0392b', marginBottom: '24px' }}>
-            Error loading submissions: {error.message}
+            Error loading inquiries: {error.message}
           </p>
         )}
 
-        {submissions?.length === 0 && (
+        {inquiries.length === 0 && !error && (
           <div
             style={{
               background: '#fff',
@@ -99,17 +164,17 @@ export default async function AdminPage() {
               color: 'rgba(0,0,0,0.4)',
             }}
           >
-            No submissions yet.
+            No inquiries.
           </div>
         )}
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          {(submissions as Submission[])?.map((s) => (
+          {inquiries.map((i) => (
             <div
-              key={s.id}
+              key={i.id}
               style={{
                 display: 'grid',
-                gridTemplateColumns: '280px 1fr',
+                gridTemplateColumns: '300px 1fr',
                 border: '1px solid #E0E0E0',
                 borderRadius: '8px',
                 overflow: 'hidden',
@@ -120,44 +185,142 @@ export default async function AdminPage() {
               <div
                 style={{
                   background: '#0F2A71',
-                  padding: '28px 24px',
+                  padding: '24px',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '6px',
                 }}
               >
                 <p style={{ fontSize: '16px', fontWeight: 800, color: '#ffffff', marginBottom: '4px' }}>
-                  {s.name}
+                  {i.person_name ?? '(no name)'}
                 </p>
-                <a href={`mailto:${s.email}`} style={{ fontSize: '13px', color: '#F4D462', wordBreak: 'break-all' }}>
-                  {s.email}
-                </a>
-                {s.company && (
-                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)', marginTop: '2px' }}>
-                    {s.company}
+                {i.person_email && (
+                  <a
+                    href={`mailto:${i.person_email}`}
+                    style={{ fontSize: '13px', color: '#F4D462', wordBreak: 'break-all' }}
+                  >
+                    {i.person_email}
+                  </a>
+                )}
+                {i.person_company && (
+                  <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.65)' }}>
+                    {i.person_company}
                   </p>
                 )}
-                <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.35)', marginTop: 'auto', paddingTop: '20px' }}>
-                  {formatDate(s.created_at)}
+                {i.person_role && (
+                  <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)' }}>
+                    {i.person_role}
+                  </p>
+                )}
+                {i.person_phone && (
+                  <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.55)' }}>
+                    {i.person_phone}
+                  </p>
+                )}
+                <p
+                  style={{
+                    fontSize: '12px',
+                    color: 'rgba(255,255,255,0.35)',
+                    marginTop: 'auto',
+                    paddingTop: '20px',
+                  }}
+                >
+                  {formatDate(i.created_at)}
                 </p>
               </div>
 
               {/* Inquiry panel */}
-              <div style={{ padding: '28px 32px' }}>
-                <p
+              <div style={{ padding: '24px 28px' }}>
+                <div
                   style={{
-                    fontSize: '11px',
-                    fontWeight: 800,
-                    textTransform: 'uppercase',
-                    color: 'rgba(0,0,0,0.35)',
-                    marginBottom: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    marginBottom: '14px',
+                    flexWrap: 'wrap',
                   }}
                 >
-                  Inquiry
-                </p>
-                <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#000000', whiteSpace: 'pre-wrap' }}>
-                  {s.message}
-                </p>
+                  <span
+                    style={{
+                      fontSize: '11px',
+                      fontWeight: 800,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.05em',
+                      color: '#ffffff',
+                      background: TYPE_COLOR[i.type],
+                      padding: '3px 10px',
+                      borderRadius: '999px',
+                    }}
+                  >
+                    {TYPE_LABEL[i.type]}
+                  </span>
+                  <StatusSelect inquiryId={i.id} initialStatus={i.status} />
+                  {i.source && (
+                    <span style={{ fontSize: '12px', color: 'rgba(0,0,0,0.45)' }}>
+                      via {i.source}
+                    </span>
+                  )}
+                </div>
+
+                {i.subject && (
+                  <p
+                    style={{
+                      fontSize: '15px',
+                      fontWeight: 800,
+                      color: '#0F2A71',
+                      marginBottom: '8px',
+                    }}
+                  >
+                    {i.subject}
+                  </p>
+                )}
+
+                {i.message && (
+                  <p
+                    style={{
+                      fontSize: '15px',
+                      lineHeight: 1.7,
+                      color: '#000000',
+                      whiteSpace: 'pre-wrap',
+                      marginBottom: i.metadata && Object.keys(i.metadata).length > 0 ? '16px' : 0,
+                    }}
+                  >
+                    {i.message}
+                  </p>
+                )}
+
+                {i.metadata && Object.keys(i.metadata).length > 0 && (
+                  <div
+                    style={{
+                      background: '#F8F8FA',
+                      border: '1px solid #E8E8EE',
+                      borderRadius: '6px',
+                      padding: '12px 16px',
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: '11px',
+                        fontWeight: 800,
+                        textTransform: 'uppercase',
+                        color: 'rgba(0,0,0,0.4)',
+                        marginBottom: '6px',
+                      }}
+                    >
+                      Details
+                    </p>
+                    <dl style={{ display: 'grid', gridTemplateColumns: '160px 1fr', gap: '4px 12px', fontSize: '13px', margin: 0 }}>
+                      {Object.entries(i.metadata).map(([k, v]) => (
+                        <Fragment key={k}>
+                          <dt style={{ color: 'rgba(0,0,0,0.5)' }}>{k}</dt>
+                          <dd style={{ color: '#000', margin: 0 }}>
+                            {typeof v === 'string' ? v : JSON.stringify(v)}
+                          </dd>
+                        </Fragment>
+                      ))}
+                    </dl>
+                  </div>
+                )}
               </div>
             </div>
           ))}

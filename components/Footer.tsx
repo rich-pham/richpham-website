@@ -5,6 +5,8 @@ import { useState } from 'react';
 
 const footerLinks = [
   { label: 'About', href: '/about' },
+  { label: 'Coaching', href: '/coaching' },
+  { label: 'Speaking', href: '/speakers' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/contact' },
 ];
@@ -19,6 +21,28 @@ function LinkedInIcon() {
 
 export default function Footer() {
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  async function handleSubscribe(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email.trim()) return;
+    setStatus('sending');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim(), source: 'footer' }),
+      });
+      if (res.ok) {
+        setStatus('success');
+        setEmail('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  }
 
   return (
     <footer style={{ background: '#001740', padding: '64px 0 32px' }}>
@@ -56,12 +80,14 @@ export default function Footer() {
             <p style={{ fontSize: '14px', color: 'rgba(255,255,255,0.65)', marginBottom: '16px', lineHeight: 1.5 }}>
               Join the Leadership &amp; Growth Newsletter
             </p>
-            <div style={{ display: 'flex', gap: '8px' }}>
+            <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '8px' }}>
               <input
                 type="email"
+                required
                 placeholder="Your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={status === 'sending' || status === 'success'}
                 style={{
                   background: 'rgba(255,255,255,0.10)',
                   border: 'none',
@@ -75,10 +101,30 @@ export default function Footer() {
                   minWidth: 0,
                 }}
               />
-              <button className="btn-blue" style={{ padding: '10px 18px', fontSize: '13px', whiteSpace: 'nowrap' }}>
-                Subscribe
+              <button
+                type="submit"
+                className="btn-blue"
+                disabled={status === 'sending' || status === 'success'}
+                style={{
+                  padding: '10px 18px',
+                  fontSize: '13px',
+                  whiteSpace: 'nowrap',
+                  opacity: status === 'sending' ? 0.6 : 1,
+                }}
+              >
+                {status === 'sending' ? 'Subscribing…' : status === 'success' ? 'Subscribed' : 'Subscribe'}
               </button>
-            </div>
+            </form>
+            {status === 'error' && (
+              <p style={{ fontSize: '12px', color: '#ffb3b3', marginTop: '8px' }}>
+                Something went wrong. Please try again.
+              </p>
+            )}
+            {status === 'success' && (
+              <p style={{ fontSize: '12px', color: '#a7f3d0', marginTop: '8px' }}>
+                Thanks — you&apos;re on the list.
+              </p>
+            )}
           </div>
         </div>
 

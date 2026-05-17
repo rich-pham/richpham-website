@@ -27,30 +27,24 @@ const labelStyle = {
 type FormState = {
   name: string;
   email: string;
+  phone: string;
   company: string;
-  type: 'general' | 'coaching' | 'speaker';
+  role: string;
   message: string;
 };
 
-const TYPE_OPTIONS: Array<{ value: FormState['type']; label: string }> = [
-  { value: 'general', label: 'General — something else' },
-  { value: 'coaching', label: 'Coaching — work with me 1:1' },
-  { value: 'speaker', label: 'Speaker — invite me to your event' },
-];
-
-export default function ContactForm() {
+export default function CoachingForm() {
   const [form, setForm] = useState<FormState>({
     name: '',
     email: '',
+    phone: '',
     company: '',
-    type: 'general',
+    role: '',
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
-  function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
@@ -61,7 +55,12 @@ export default function ContactForm() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, source: 'contact-page' }),
+        body: JSON.stringify({
+          ...form,
+          type: 'coaching',
+          subject: 'Coaching inquiry',
+          source: 'coaching-page',
+        }),
       });
       setStatus(res.ok ? 'success' : 'error');
     } catch {
@@ -73,10 +72,10 @@ export default function ContactForm() {
     return (
       <div style={{ padding: '48px 0', textAlign: 'center' }}>
         <p style={{ fontSize: '24px', fontWeight: 800, color: '#ffffff', marginBottom: '12px' }}>
-          Message received.
+          Got it.
         </p>
         <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.6 }}>
-          Thanks for reaching out — I&apos;ll be in touch shortly.
+          Thanks for reaching out about coaching — I&apos;ll be in touch within a few business days.
         </p>
       </div>
     );
@@ -84,64 +83,37 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div>
-        <label htmlFor="name" style={labelStyle}>Full name *</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          required
-          value={form.name}
-          onChange={handleChange}
-          style={inputStyle}
-        />
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+        <div>
+          <label htmlFor="name" style={labelStyle}>Full name *</label>
+          <input id="name" name="name" type="text" required value={form.name} onChange={handleChange} style={inputStyle} />
+        </div>
+        <div>
+          <label htmlFor="email" style={labelStyle}>Email *</label>
+          <input id="email" name="email" type="email" required value={form.email} onChange={handleChange} style={inputStyle} />
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+        <div>
+          <label htmlFor="company" style={labelStyle}>Company</label>
+          <input id="company" name="company" type="text" value={form.company} onChange={handleChange} style={inputStyle} />
+        </div>
+        <div>
+          <label htmlFor="role" style={labelStyle}>Your role</label>
+          <input id="role" name="role" type="text" value={form.role} onChange={handleChange} style={inputStyle} />
+        </div>
       </div>
 
       <div>
-        <label htmlFor="company" style={labelStyle}>Company name</label>
-        <input
-          id="company"
-          name="company"
-          type="text"
-          value={form.company}
-          onChange={handleChange}
-          style={inputStyle}
-        />
+        <label htmlFor="phone" style={labelStyle}>Phone (optional)</label>
+        <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleChange} style={inputStyle} />
       </div>
 
       <div>
-        <label htmlFor="email" style={labelStyle}>Email *</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          value={form.email}
-          onChange={handleChange}
-          style={inputStyle}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="type" style={labelStyle}>What&apos;s this about? *</label>
-        <select
-          id="type"
-          name="type"
-          required
-          value={form.type}
-          onChange={handleChange}
-          style={inputStyle}
-        >
-          {TYPE_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value} style={{ color: '#000' }}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div>
-        <label htmlFor="message" style={labelStyle}>Message *</label>
+        <label htmlFor="message" style={labelStyle}>
+          What would you like to work on? *
+        </label>
         <textarea
           id="message"
           name="message"
@@ -150,6 +122,7 @@ export default function ContactForm() {
           value={form.message}
           onChange={handleChange}
           style={{ ...inputStyle, resize: 'vertical' }}
+          placeholder="A short description of where you are now, what you're navigating, and what success would look like."
         />
       </div>
 
@@ -166,7 +139,7 @@ export default function ContactForm() {
           className="btn-primary"
           style={{ opacity: status === 'sending' ? 0.6 : 1 }}
         >
-          {status === 'sending' ? 'Sending…' : 'Submit'}
+          {status === 'sending' ? 'Sending…' : 'Request a discovery call'}
         </button>
       </div>
     </form>
