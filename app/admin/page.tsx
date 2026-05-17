@@ -8,7 +8,7 @@ import {
   type InquiryRow,
   type InquiryType,
 } from '@/lib/supabase';
-import InquiryTable from './_components/InquiryTable';
+import AdminBoard from './_components/AdminBoard';
 
 function isValidType(value: string | undefined): value is InquiryType {
   return !!value && (INQUIRY_TYPES as readonly string[]).includes(value);
@@ -163,7 +163,7 @@ export default async function AdminPage({
           </p>
         )}
 
-        <InquiryTable inquiries={inquiries} />
+        <AdminBoard inquiries={inquiries} />
       </div>
     </div>
   );
