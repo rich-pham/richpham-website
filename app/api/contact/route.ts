@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
 
     const { error: emailError } = await resend.emails.send({
       from: 'Contact Form <contact@infiniteleverage-3.com>',
-      to: 'phamrich@gmail.com',
+      to: ['phamrich@gmail.com', 'dave@edge8.co'],
       subject: `New message from ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
